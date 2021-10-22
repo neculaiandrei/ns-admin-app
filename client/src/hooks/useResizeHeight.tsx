@@ -1,13 +1,17 @@
 import { useEffect, useRef } from "react";
 
-export const useResizeHeight = (offset: number) => {
+export const useResizeHeight = () => {
   const elRef = useRef(null);
 
   useEffect(() => {
     if (elRef && elRef.current) {
       const resizeFn = () => {
         if (elRef.current) {
-          (elRef.current as unknown as HTMLElement).style.height = (window.innerHeight - offset) + 'px';;
+          if (window.innerWidth > 768) {
+            (elRef.current as unknown as HTMLElement).style.height = (window.innerHeight - 49) + 'px';;
+          } else {
+            (elRef.current as unknown as HTMLElement).style.height = (window.innerHeight - 49 - 49) + 'px';;
+          }
         }
       };
 
@@ -16,7 +20,7 @@ export const useResizeHeight = (offset: number) => {
 
       return () => window.removeEventListener('resize', resizeFn);
     }
-  }, [elRef, offset]);
+  }, [elRef]);
 
   return elRef;
 };

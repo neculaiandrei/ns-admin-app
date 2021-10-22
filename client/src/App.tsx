@@ -10,6 +10,7 @@ import { PersonInfo } from './components/PersonInfo';
 import { PersonAdd } from './components/PersonAdd';
 import { PersonEdit } from './components/PersonEdit';
 import { AppHeader } from './AppHeader';
+import { BottomNav } from './components/BottomNav';
 
 interface AppProps {
   persons: Person[]
@@ -17,7 +18,7 @@ interface AppProps {
 
 export const App = ({ persons }: AppProps) => {
   const size = useWindowResize();
-  const elRef = useResizeHeight(49);
+  const elRef = useResizeHeight();
 
   return (
     <BrowserRouter>
@@ -47,6 +48,7 @@ export const App = ({ persons }: AppProps) => {
               </Route>
             </Switch>
           </div>
+          {size && size.width <= 768 && <BottomNav />}
         </div>
       </div>
     </BrowserRouter>

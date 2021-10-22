@@ -1,0 +1,34 @@
+@import '../../colors.scss';
+
+.ns-bottom-nav {
+  height: 49px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+
+  > div {
+      cursor: pointer;
+      padding: 0px 12px;
+      > i {
+          display: inline-flex;
+          justify-content: center;
+          width: 32px;
+      }
+
+      > span {
+          font-size: 1.2em;
+      }
+
+      &:first-child.selected {
+        color: $lightBlue;
+        font-weight: 500;
+      }
+
+      &:last-child.selected {
+        color: $yellow;
+        font-weight: 500;
+      }
+  }
+}

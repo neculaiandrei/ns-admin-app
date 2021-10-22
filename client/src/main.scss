@@ -6,6 +6,7 @@
     flex-direction: column;
 
 		> .header {
+      height: 49px;
 			padding: 8px;
 			padding-left: 14px;
 
@@ -24,6 +25,12 @@
 		.body {
 			display: flex;
 			flex-direction: row;
+
+      @media screen and (max-width: 768px) {
+        & {
+          flex-direction: column;
+        }
+      }
 		}
 
     .main {
