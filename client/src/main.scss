@@ -35,6 +35,14 @@ $darkBlue: #1d4b7b;
     flex-direction: row;
     border-left: none;
     border-right: none;
+
+    button {
+      font-size: 1.2em;
+
+      &:hover {
+        color: $lightBlue;
+      }
+    }
 }
 
 .ns-btn:focus {
