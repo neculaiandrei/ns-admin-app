@@ -29,51 +29,12 @@ $darkBlue: #1d4b7b;
     }
 }
 
-.ns-side-nav {
-    width: 128px;
-    border-right: 1px solid rgba(0,0,0,.125);
-
-    > div {
-				padding: 12px;
-        > i {
-            display: inline-flex;
-            justify-content: center;
-            width: 32px;
-        }
-
-				> span {
-						font-size: 1.2em;
-				}
-    }
-}
-
-.ns-persons-page {
-    margin: auto 20%;
-
-    .header {
-      display: flex;
-      flex-direction: row-reverse;
-      padding: 16px 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      & {
-        margin: auto 5%;
-      }
-    }
-}
-
 .ns-list-item {
     display: flex;
     align-items: center;
     flex-direction: row;
     border-left: none;
     border-right: none;
-		border-color: 469ef7;
-
-    > div:first-child {
-        flex-grow: 1;
-    }
 }
 
 .ns-btn:focus {

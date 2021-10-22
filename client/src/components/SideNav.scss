@@ -1,0 +1,17 @@
+.ns-side-nav {
+  width: 144px;
+  border-right: 1px solid rgba(0,0,0,.125);
+
+  > div {
+      padding: 12px;
+      > i {
+          display: inline-flex;
+          justify-content: center;
+          width: 32px;
+      }
+
+      > span {
+          font-size: 1.2em;
+      }
+  }
+}

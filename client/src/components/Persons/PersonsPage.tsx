@@ -1,4 +1,5 @@
 import { PersonList } from "./PersonList";
+import './Persons.scss';
 
 export const PersonsPage = ({persons}: any) => (
   <div className="ns-persons-page">
