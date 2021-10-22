@@ -1,0 +1,1 @@
+export { PersonsPage as Persons } from './PersonsPage';

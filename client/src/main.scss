@@ -1,0 +1,121 @@
+$yellow: #ef9836;
+$lightBlue: #469ef7;
+$darkBlue: #1d4b7b;
+
+.ns-layout {
+		height: 100%;
+    display: flex;
+    flex-direction: column;
+
+		> .header {
+			padding: 8px;
+			padding-left: 14px;
+
+			color: white;
+			font-size: 1.4em;
+
+			background: rgb(29,75,123);
+			background: linear-gradient(90deg, $darkBlue 0%, $darkBlue 25%, $lightBlue 35%, $lightBlue 60%, $yellow 70%, $yellow 100%);
+		}
+
+		.body {
+			display: flex;
+			flex-direction: row;
+		}
+
+    .main {
+      overflow-y: scroll;
+      flex-grow: 1;
+    }
+}
+
+.ns-side-nav {
+    width: 128px;
+    border-right: 1px solid rgba(0,0,0,.125);
+
+    > div {
+				padding: 12px;
+        > i {
+            display: inline-flex;
+            justify-content: center;
+            width: 32px;
+        }
+
+				> span {
+						font-size: 1.2em;
+				}
+    }
+}
+
+.ns-persons-page {
+    margin: auto 20%;
+
+    .header {
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 16px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      & {
+        margin: auto 5%;
+      }
+    }
+}
+
+.ns-list-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-left: none;
+    border-right: none;
+		border-color: 469ef7;
+
+    > div:first-child {
+        flex-grow: 1;
+    }
+}
+
+.ns-btn:focus {
+  box-shadow: none !important;
+}
+
+.ns-btn-primary {
+  background-color: $lightBlue;
+  border: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $darkBlue;
+  }
+}
+
+.ns-list-item:first-child {
+  border-top: none;
+}
+
+.ns-list-item:last-child {
+  border-bottom: none;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #469ef7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4b7b;
+}
