@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import persons, { Person } from "../../Data";
+import { Person, persons } from "../../Data";
 import { PersonCard } from "../PersonCard";
 
 const defaultPerson: Person = {
@@ -22,7 +22,7 @@ export const PersonEdit = () => {
   const [jobTitle, setJobTitle] = useState("");
 
   useEffect(() => {
-    var p = persons.find(p => p.id === +id);
+    const p = persons.find(p => p.id === +id);
 
     if (p) {
       setPerson(p);

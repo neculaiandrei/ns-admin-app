@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import persons, { Person } from '../../Data';
+import { Person, persons } from '../../Data';
 import { PersonCard } from "../PersonCard";
 import './PersonInfo.scss';
 

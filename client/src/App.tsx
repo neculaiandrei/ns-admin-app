@@ -4,7 +4,7 @@ import { Person } from './Data';
 import { useResizeHeight } from './hooks/useResizeHeight';
 import { useWindowResize } from './hooks/useWindowResize';
 import {
-  BrowserRouter, Route, Switch, useHistory
+  BrowserRouter, Route, Switch
 } from "react-router-dom";
 import { PersonInfo } from './components/PersonInfo';
 import { PersonAdd } from './components/PersonAdd';

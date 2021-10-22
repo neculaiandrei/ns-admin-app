@@ -22,7 +22,7 @@ export interface GroupPersonLink {
     personId: number;
 }
 
-export const generatePersons = (n: number): Person[] => {
+const generatePersons = (n: number): Person[] => {
     const result: Person[] = [];
 
     for (let i = 0; i < n; i++) {
@@ -41,6 +41,48 @@ export const generatePersons = (n: number): Person[] => {
     return result;
 }
 
-const persons = generatePersons(100);
+const generateGroup = (n: number): Group[] => {
+    const result: Group[] = [];
 
-export default persons;
+    for (let i = 0; i < n; i++) {
+        const group: Group = {
+            id: faker.datatype.number(),
+            name: faker.lorem.word(),
+            dateCreated: faker.date.past(1).toISOString(),
+            dateUpdated: faker.date.past(1).toISOString()
+        };
+
+        result.push(group);
+    }
+
+    result[1].parentId = result[0].id;
+    result[2].parentId = result[0].id;
+    result[3].parentId = result[2].id;
+    result[4].parentId = result[2].id;
+
+    return result;
+};
+
+const generateGroupPersonLink = (persons: Person[], groups: Group[]) => {
+    const result: GroupPersonLink[] = [];
+
+    for (let i = 0; i < persons.length; i++) {
+        const linksCount = Math.floor(Math.random() * 3);
+
+        for (let j = 0; j < linksCount; j++) {
+            let randomGroup = groups[Math.floor(Math.random() * groups.length)];
+            result.push({
+                personId: persons[i].id,
+                groupId: randomGroup.id
+            });
+        }
+    }
+
+    return result;
+};
+
+const persons = generatePersons(100);
+const groups = generateGroup(10);
+const links = generateGroupPersonLink(persons, groups);
+
+export { persons, groups, links };
