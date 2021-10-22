@@ -47,7 +47,7 @@ const generateGroup = (n: number): Group[] => {
     for (let i = 0; i < n; i++) {
         const group: Group = {
             id: faker.datatype.number(),
-            name: faker.lorem.word(),
+            name: faker.commerce.department(),
             dateCreated: faker.date.past(1).toISOString(),
             dateUpdated: faker.date.past(1).toISOString()
         };

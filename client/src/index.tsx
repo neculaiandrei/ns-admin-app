@@ -8,7 +8,7 @@ import { persons, groups, links } from './Data';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App persons={persons}/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,26 +1,27 @@
-import { useHistory } from "react-router";
-import { Person } from "../../Data";
+import { useHistory } from "react-router-dom";
+import { Group } from "../../Data";
 
-export interface PersonRowItemProps {
-  person: Person
-}
+export interface GroupRowItemProps {
+  group: Group,
+  onSelect: (id: number) => void
+};
 
-export const PersonRowItem = ({ person }: PersonRowItemProps) => {
+export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
   const history = useHistory();
 
   const goToPersonDetail = () => {
-    history.push(`/person/info/${person.id}`);
+    history.push(`/group/info/${props.group.id}`);
   };
 
   const goToPersonEdit = () => {
-    history.push(`/person/edit/${person.id}`);
+    history.push(`/group/edit/${props.group.id}`);
   };
-
+  
   return (
     <li className="list-group-item ns-list-item">
-      <div className="ns-list-item-info">
-        <span>{person.firstName} {person.lastName}</span>
-        <span>{person.jobTitle}</span>
+      <div className="ns-list-item-info-group" onClick={() => props.onSelect(props.group.id)}>
+        <i className="fas fa-users"></i>
+        {props.group.name}
       </div>
       <div>
         <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonDetail}>

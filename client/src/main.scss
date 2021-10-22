@@ -14,7 +14,11 @@
 			font-size: 1.4em;
 
 			background: $darkBlue;
-			background: linear-gradient(90deg, $darkBlue 0%, $darkBlue 20%, $lightBlue 35%, $lightBlue 60%, $yellow 75%, $yellow 100%);
+			background: linear-gradient(
+        90deg, $darkBlue 0%, $darkBlue 20%, 
+        $lightBlue 35%, $lightBlue 60%, 
+        $lightYellow 75%, $lightYellow 100%
+      );
 
       > span {
         cursor: pointer;
@@ -34,7 +38,7 @@
 		}
 
     .main {
-      overflow-y: scroll;
+      overflow-y: auto;
       flex-grow: 1;
     }
 }
@@ -48,26 +52,11 @@
 
     button {
       font-size: 1.2em;
-
-      &:hover {
-        color: $lightBlue;
-      }
     }
 }
 
 .ns-btn:focus {
   box-shadow: none !important;
-}
-
-.ns-btn-primary {
-  background-color: $lightBlue;
-  border: none;
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $darkBlue;
-  }
 }
 
 .ns-list-item:first-child {

@@ -11,12 +11,9 @@ import { PersonAdd } from './components/PersonAdd';
 import { PersonEdit } from './components/PersonEdit';
 import { AppHeader } from './AppHeader';
 import { BottomNav } from './components/BottomNav';
+import { Groups } from './components/Groups';
 
-interface AppProps {
-  persons: Person[]
-}
-
-export const App = ({ persons }: AppProps) => {
+export const App = () => {
   const size = useWindowResize();
   const elRef = useResizeHeight();
 
@@ -29,13 +26,13 @@ export const App = ({ persons }: AppProps) => {
           <div ref={elRef} className="main">
             <Switch>
               <Route exact path="/">
-                <Persons persons={persons} />
+                <Persons />
               </Route>
               <Route path="/persons">
-                <Persons persons={persons} />
+                <Persons />
               </Route>
               <Route path="/groups">
-                <div>GROUPS</div>
+                <Groups />
               </Route>
               <Route path="/person/info/:id">
                 <PersonInfo />

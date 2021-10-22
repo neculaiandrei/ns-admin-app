@@ -1,13 +1,9 @@
-import { Person } from "../../Data";
 import { PersonRowItem } from "./PersonRowItem";
+import { persons } from "../../Data";
 
-export interface PersonListProps {
-  persons: Person[]
-}
-
-export const PersonList = ({ persons }: PersonListProps) => {
+export const PersonList = () => {
   return (
-    <ul className="list-group ns-person-list">
+    <ul className="list-group">
       {persons.map(p => (
         <PersonRowItem person={p} key={p.id} />
       ))}
