@@ -1,5 +1,4 @@
 import { Person } from "../../Data";
-import { useResizeHeight } from "../../hooks/useResizeHeight";
 import { PersonRowItem } from "./PersonRowItem";
 
 export interface PersonListProps {

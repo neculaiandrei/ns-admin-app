@@ -1,13 +1,10 @@
 import { PersonList } from "./PersonList";
 import './PersonsPage.scss';
+import { PersonsPageHeader } from "./PersonsPageHeader";
 
 export const PersonsPage = ({persons}: any) => (
   <div className="ns-persons-page">
-      <div className="header">
-        <button className="btn btn-primary ns-btn ns-btn-primary">
-          Add Person
-        </button>
-      </div>
+      <PersonsPageHeader />
       <PersonList persons={persons} />
   </div>
 );

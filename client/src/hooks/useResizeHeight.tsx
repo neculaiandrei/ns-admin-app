@@ -16,7 +16,7 @@ export const useResizeHeight = (offset: number) => {
 
       return () => window.removeEventListener('resize', resizeFn);
     }
-  }, [elRef]);
+  }, [elRef, offset]);
 
   return elRef;
 };

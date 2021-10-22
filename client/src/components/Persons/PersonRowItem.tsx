@@ -10,6 +10,10 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
 
   const goToPersonDetail = () => {
     history.push(`/person/info/${person.id}`);
+  };
+
+  const goToPersonEdit = () => {
+    history.push(`/person/edit/${person.id}`);
   }
 
   return (
@@ -22,7 +26,7 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
         <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonDetail}>
           <i className="fas fa-info-circle"></i>
         </button>
-        <button className="btn btn-default btn-sm ns-btn">
+        <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonEdit}>
           <i className="far fa-edit"></i>
         </button>
       </div>

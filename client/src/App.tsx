@@ -7,6 +7,8 @@ import {
   BrowserRouter, Route, Switch
 } from "react-router-dom";
 import { PersonInfo } from './components/PersonInfo';
+import { PersonAdd } from './components/PersonAdd';
+import { PersonEdit } from './components/PersonEdit';
 
 interface AppProps {
   persons: Person[]
@@ -37,6 +39,12 @@ export const App = ({ persons }: AppProps) => {
               </Route>
               <Route path="/person/info/:id">
                 <PersonInfo />
+              </Route>
+              <Route path="/person/add">
+                <PersonAdd />
+              </Route>
+              <Route path="/person/edit/:id">
+                <PersonEdit />
               </Route>
             </Switch>
           </div>
