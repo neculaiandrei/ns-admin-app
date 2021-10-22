@@ -1,8 +1,11 @@
+@import '../../colors.scss';
+
 .ns-side-nav {
   width: 144px;
   border-right: 1px solid rgba(0,0,0,.125);
 
   > div {
+      cursor: pointer;
       padding: 12px;
       > i {
           display: inline-flex;
@@ -12,6 +15,16 @@
 
       > span {
           font-size: 1.2em;
+      }
+
+      &:first-child.selected {
+        color: $lightBlue;
+        font-weight: 500;
+      }
+
+      &:last-child.selected {
+        color: $yellow;
+        font-weight: 500;
       }
   }
 }

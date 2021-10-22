@@ -1,14 +1,15 @@
 import { Persons } from './components/Persons';
-import { SideNav } from './components/SideNav';
+import { SideNav } from './components/SideNav/SideNav';
 import { Person } from './Data';
 import { useResizeHeight } from './hooks/useResizeHeight';
 import { useWindowResize } from './hooks/useWindowResize';
 import {
-  BrowserRouter, Route, Switch
+  BrowserRouter, Route, Switch, useHistory
 } from "react-router-dom";
 import { PersonInfo } from './components/PersonInfo';
 import { PersonAdd } from './components/PersonAdd';
 import { PersonEdit } from './components/PersonEdit';
+import { AppHeader } from './AppHeader';
 
 interface AppProps {
   persons: Person[]
@@ -21,9 +22,7 @@ export const App = ({ persons }: AppProps) => {
   return (
     <BrowserRouter>
       <div className="ns-layout">
-        <div className="header">
-          Admin App
-        </div>
+        <AppHeader />
         <div className="body">
           {size && size.width > 768 && <SideNav />}
           <div ref={elRef} className="main">
