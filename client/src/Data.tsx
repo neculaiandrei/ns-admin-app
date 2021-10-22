@@ -40,3 +40,7 @@ export const generatePersons = (n: number): Person[] => {
 
     return result;
 }
+
+const persons = generatePersons(100);
+
+export default persons;

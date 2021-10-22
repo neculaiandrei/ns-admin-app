@@ -1,6 +1,4 @@
-$yellow: #ef9836;
-$lightBlue: #469ef7;
-$darkBlue: #1d4b7b;
+@import './colors.scss';
 
 .ns-layout {
 		height: 100%;
@@ -14,7 +12,7 @@ $darkBlue: #1d4b7b;
 			color: white;
 			font-size: 1.4em;
 
-			background: rgb(29,75,123);
+			background: $darkBlue;
 			background: linear-gradient(90deg, $darkBlue 0%, $darkBlue 25%, $lightBlue 35%, $lightBlue 60%, $yellow 70%, $yellow 100%);
 		}
 
@@ -71,7 +69,7 @@ $darkBlue: #1d4b7b;
 
 /* width */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 /* Track */
@@ -81,10 +79,13 @@ $darkBlue: #1d4b7b;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #469ef7;
+  background: #555;
+  
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1d4b7b;
+  background: #999;
+  border-radius: 10px;
 }

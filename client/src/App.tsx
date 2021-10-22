@@ -6,6 +6,7 @@ import { useWindowResize } from './hooks/useWindowResize';
 import {
   BrowserRouter, Route, Switch
 } from "react-router-dom";
+import { PersonInfo } from './components/PersonInfo';
 
 interface AppProps {
   persons: Person[]
@@ -34,8 +35,8 @@ export const App = ({ persons }: AppProps) => {
               <Route path="/groups">
                 <div>DATE CAMI BAG PULA</div>
               </Route>
-              <Route path="/person/details/:id">
-                <div>INFO</div>
+              <Route path="/person/info/:id">
+                <PersonInfo />
               </Route>
             </Switch>
           </div>

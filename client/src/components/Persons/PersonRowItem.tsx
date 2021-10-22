@@ -9,7 +9,7 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
   const history = useHistory();
 
   const goToPersonDetail = () => {
-    history.push(`/person/details/${person.id}`);
+    history.push(`/person/info/${person.id}`);
   }
 
   return (

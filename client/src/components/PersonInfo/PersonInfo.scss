@@ -1,0 +1,23 @@
+@import '../../colors.scss';
+
+.ns-person-info-card {
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 420px;
+  width: 90%;
+
+  .card-header {
+    background-color: $lightBlue;
+    color: white;
+  }
+
+  .card-body {
+    > p > span:first-child {
+      font-weight: 500;
+    }
+  }
+
+  .card-header {
+    font-size: 1.3em;
+  }
+}
