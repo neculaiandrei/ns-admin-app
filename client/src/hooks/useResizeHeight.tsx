@@ -7,7 +7,7 @@ export const useResizeHeight = (offset: number) => {
     if (elRef && elRef.current) {
       const resizeFn = () => {
         if (elRef.current) {
-          (elRef.current as unknown as HTMLElement).style.height = (document.documentElement.clientHeight - offset) + 'px';;
+          (elRef.current as unknown as HTMLElement).style.height = (window.innerHeight - offset) + 'px';;
         }
       };
 
