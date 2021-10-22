@@ -27,10 +27,10 @@ export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group }) => 
         ) : <div></div>}
       </div>
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonAdd}>
-        Add Group
+        <i className="fas fa-plus-circle"></i> Add
       </button>
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonsLink}>
-        Link Persons
+        <i className="fas fa-link"></i> Link
       </button>
     </div>
   );

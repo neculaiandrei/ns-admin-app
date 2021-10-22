@@ -10,7 +10,7 @@ export const PersonsPageHeader = () => {
   return (
     <div className="header">
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonAdd}>
-        Add Person
+        <i className="fas fa-plus-circle"></i> Add
       </button>
     </div>
   );
