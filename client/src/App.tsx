@@ -34,7 +34,7 @@ export const App = ({ persons }: AppProps) => {
                 <Persons persons={persons} />
               </Route>
               <Route path="/groups">
-                <div>DATE CAMI BAG PULA</div>
+                <div>GROUPS</div>
               </Route>
               <Route path="/person/info/:id">
                 <PersonInfo />
