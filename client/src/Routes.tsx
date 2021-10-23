@@ -25,6 +25,9 @@ export const Routes = () => (
     <Route path="/person/edit/:id">
       <PersonEdit />
     </Route>
+    <Route path="/groups/:parentId">
+      <Groups />
+    </Route>
     <Route path="/groups">
       <Groups />
     </Route>

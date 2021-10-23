@@ -1,10 +1,23 @@
 import { useCallback, useContext, useMemo, useState } from "react";
+import { useHistory, useParams } from "react-router";
 import { StoreContext } from "../../App";
 import { GroupList } from "./GroupList";
 import { GroupsPageHeader } from "./GroupsPageHeader";
 
+const useParentIdParam = () => {
+  const { parentId } = useParams<{ parentId: string }>();
+
+  if (parentId === undefined || parentId === null) {
+    return undefined;
+  }
+  
+  const isNum = /^\d+$/.test(parentId);
+  return isNum ? +parentId : undefined;
+};
+
 export const GroupsPage = () => {
-  const [parentId, setParentId] = useState<number | undefined>(undefined);
+  let parentId = useParentIdParam();
+  const history = useHistory();
   const { data } = useContext(StoreContext);
 
   const group = useMemo(() => {
@@ -13,13 +26,22 @@ export const GroupsPage = () => {
 
   const goBack = useCallback(() => {
     const g = data.groups.find(g => g.id === parentId);
-    setParentId(g?.parentId);
+
+    if (g?.parentId) {
+      history.push(`/groups/${g?.parentId}`);
+    } else {
+      history.push('groups');
+    }
   }, [parentId, data.groups]);
+
+  const goForward = (id: number) => {
+    history.push(`/groups/${id}`);
+  };
 
   return (
     <div className="ns-groups-page">
       <GroupsPageHeader group={group} goBack={goBack} />
-      <GroupList parentId={parentId} onSelect={id => setParentId(id)}/>
+      <GroupList parentId={parentId} onSelect={goForward}/>
     </div>
   );
 };
