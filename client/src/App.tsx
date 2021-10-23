@@ -1,19 +1,14 @@
-import { Persons } from './components/Persons';
 import { SideNav } from './components/SideNav/SideNav';
 import { useResizeHeight } from './hooks/useResizeHeight';
 import { useWindowResize } from './hooks/useWindowResize';
 import {
-  BrowserRouter, Route, Switch
-} from "react-router-dom";
-import { PersonInfo } from './components/PersonInfo';
-import { PersonAdd } from './components/PersonAdd';
-import { PersonEdit } from './components/PersonEdit';
+  BrowserRouter} from "react-router-dom";
 import { AppHeader } from './AppHeader';
 import { BottomNav } from './components/BottomNav';
-import { Groups } from './components/Groups';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { StoreData } from './Models';
+import { Routes } from './Routes';
 
 const defaultData: StoreData = {
   groups: [],
@@ -42,26 +37,7 @@ export const App = () => {
           {size && size.width > 768 && <SideNav />}
           <div ref={elRef} className="main">
             <StoreContext.Provider value={data}>
-              <Switch>
-                <Route exact path="/">
-                  <Persons />
-                </Route>
-                <Route path="/persons">
-                  <Persons />
-                </Route>
-                <Route path="/groups">
-                  <Groups />
-                </Route>
-                <Route path="/person/info/:id">
-                  <PersonInfo />
-                </Route>
-                <Route path="/person/add">
-                  <PersonAdd />
-                </Route>
-                <Route path="/person/edit/:id">
-                  <PersonEdit />
-                </Route>
-              </Switch>
+              <Routes />
             </StoreContext.Provider>
           </div>
           {size && size.width <= 768 && <BottomNav />}
