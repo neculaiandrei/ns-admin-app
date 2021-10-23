@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
-import { StoreContext } from '../../App';
+import { StoreContext } from '../App';
 import { PersonCard } from '../PersonCard';
 import './PersonAdd.scss';
 

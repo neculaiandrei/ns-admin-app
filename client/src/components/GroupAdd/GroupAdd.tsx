@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
-import { StoreContext } from '../../App';
+import { StoreContext } from '../App';
 import { GroupCard } from '../GroupCard';
 import './GroupAdd.scss';
 

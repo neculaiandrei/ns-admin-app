@@ -1,12 +1,12 @@
 import { Switch, Route } from "react-router-dom";
-import { GroupAdd } from "./components/GroupAdd";
-import { GroupEdit } from "./components/GroupEdit";
-import { GroupInfo } from "./components/GroupInfo";
-import { Groups } from "./components/Groups";
-import { PersonAdd } from "./components/PersonAdd";
-import { PersonEdit } from "./components/PersonEdit";
-import { PersonInfo } from "./components/PersonInfo";
-import { Persons } from "./components/Persons";
+import { GroupAdd } from "./GroupAdd";
+import { GroupEdit } from "./GroupEdit";
+import { GroupInfo } from "./GroupInfo";
+import { Groups } from "./Groups";
+import { PersonAdd } from "./PersonAdd";
+import { PersonEdit } from "./PersonEdit";
+import { PersonInfo } from "./PersonInfo";
+import { Persons } from "./Persons";
 
 export const Routes = () => (
   <Switch>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { StoreContext } from "../../App";
+import { StoreContext } from "../App";
 import { PersonRowItem } from "./PersonRowItem";
 
 export const PersonList = () => {

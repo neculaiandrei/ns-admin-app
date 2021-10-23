@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { StoreContext } from "../../App";
+import { StoreContext } from "../App";
 import { Group, Person } from "../../Models";
 import { GroupRowItem } from "./GroupRowItem";
 import { PersonRowItem } from "./PersonRowItem";

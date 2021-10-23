@@ -1,13 +1,13 @@
-import { SideNav } from './components/SideNav/SideNav';
-import { useResizeHeight } from './hooks/useResizeHeight';
-import { useWindowResize } from './hooks/useWindowResize';
+import { SideNav } from './SideNav/SideNav';
+import { useResizeHeight } from '../hooks/useResizeHeight';
+import { useWindowResize } from '../hooks/useWindowResize';
 import {
   BrowserRouter} from "react-router-dom";
 import { AppHeader } from './AppHeader';
-import { BottomNav } from './components/BottomNav';
+import { BottomNav } from './BottomNav';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { StoreData } from './Models';
+import { StoreData } from '../Models';
 import { Routes } from './Routes';
 
 const defaultData: StoreData = {

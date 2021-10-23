@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { StoreContext } from "../../App";
+import { StoreContext } from "../App";
 import { Person } from "../../Models";
 import { PersonCard } from "../PersonCard";
 import './PersonInfo.scss';
