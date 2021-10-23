@@ -30,7 +30,7 @@ export const GroupsPage = () => {
     if (g?.parentId) {
       history.push(`/groups/${g?.parentId}`);
     } else {
-      history.push('groups');
+      history.push('/groups');
     }
   }, [parentId, data.groups]);
 
