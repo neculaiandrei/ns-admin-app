@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Person } from "../../Models";
 import { PersonCard } from "../PersonCard";
 import { StoreContext } from "../../App";
+import './PersonEdit.scss';
 
 const defaultPerson: Person = {
   id: 0,
@@ -44,7 +45,7 @@ export const PersonEdit = () => {
   return (
     <PersonCard
       title={`${person.firstName} ${person.lastName}`}
-      className="ns-person-add-card">
+      className="ns-person-edit-card">
       <React.Fragment>
         <div>
           <label className="form-label">First name</label>

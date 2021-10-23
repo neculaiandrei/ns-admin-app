@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Group } from "../../Models";
 import { StoreContext } from "../../App";
 import { GroupCard } from "../GroupCard";
+import './GroupEdit.scss';
 
 const defaultPerson: Group = {
   id: 0,
@@ -38,7 +39,7 @@ export const GroupEdit = () => {
   return (
     <GroupCard
       title={`${group.name}`}
-      className="ns-group-add-card">
+      className="ns-group-edit-card">
       <React.Fragment>
         <div>
           <label className="form-label">Name</label>
