@@ -16,7 +16,13 @@ const defaultData: StoreData = {
   links: []
 };
 
-export const StoreContext = React.createContext({...defaultData});
+export const StoreContext = React.createContext<{
+  data: StoreData,
+  setData: (data: StoreData) => void
+}>({
+  data: {...defaultData},
+  setData: () => {}
+});
 
 export const App = () => {
   const size = useWindowResize();
@@ -36,7 +42,7 @@ export const App = () => {
         <div className="body">
           {size && size.width > 768 && <SideNav />}
           <div ref={elRef} className="main">
-            <StoreContext.Provider value={data}>
+            <StoreContext.Provider value={{data, setData}}>
               <Routes />
             </StoreContext.Provider>
           </div>

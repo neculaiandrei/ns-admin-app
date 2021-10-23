@@ -15,7 +15,7 @@ const defaultPerson: Person = {
 };
 
 export const PersonEdit = () => {
-  const data = useContext(StoreContext);
+  const { data } = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
   const [person, setPerson] = useState<Person>({ ...defaultPerson });

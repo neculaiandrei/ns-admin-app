@@ -5,7 +5,7 @@ import { GroupsPageHeader } from "./GroupsPageHeader";
 
 export const GroupsPage = () => {
   const [parentId, setParentId] = useState<number | undefined>(undefined);
-  const data = useContext(StoreContext);
+  const { data } = useContext(StoreContext);
 
   const group = useMemo(() => {
     return data.groups.find(g => g.id === parentId)

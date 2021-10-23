@@ -3,7 +3,7 @@ import { StoreContext } from "../../App";
 import { PersonRowItem } from "./PersonRowItem";
 
 export const PersonList = () => {
-  const data = useContext(StoreContext);
+  const { data } = useContext(StoreContext);
   
   return (
     <ul className="list-group">

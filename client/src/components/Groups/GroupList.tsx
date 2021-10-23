@@ -10,7 +10,7 @@ interface GroupListProps {
 }
 
 export const GroupList: React.FC<GroupListProps> = (props) => {
-  const data = useContext(StoreContext);
+  const { data } = useContext(StoreContext);
   const items = useMemo(() => {
     const result = {
       groups: [] as Group[],
@@ -25,7 +25,6 @@ export const GroupList: React.FC<GroupListProps> = (props) => {
     return result;
   }, [props.parentId, data.groups, data.links, data.persons]);
 
-  console.log('Render group list...');
   return (
     <ul className="list-group">
       {items.groups.map(g => (

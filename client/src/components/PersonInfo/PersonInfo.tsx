@@ -6,7 +6,7 @@ import { PersonCard } from "../PersonCard";
 import './PersonInfo.scss';
 
 export const PersonInfo = () => {
-  const data = useContext(StoreContext);
+  const { data } = useContext(StoreContext);
   let { id } = useParams<{ id: string }>();
   const [person, setPerson] = useState<Person>();
   
