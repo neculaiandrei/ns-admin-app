@@ -1,4 +1,7 @@
 import { Switch, Route } from "react-router-dom";
+import { GroupAdd } from "./components/GroupAdd";
+import { GroupEdit } from "./components/GroupEdit";
+import { GroupInfo } from "./components/GroupInfo";
 import { Groups } from "./components/Groups";
 import { PersonAdd } from "./components/PersonAdd";
 import { PersonEdit } from "./components/PersonEdit";
@@ -13,9 +16,6 @@ export const Routes = () => (
     <Route path="/persons">
       <Persons />
     </Route>
-    <Route path="/groups">
-      <Groups />
-    </Route>
     <Route path="/person/info/:id">
       <PersonInfo />
     </Route>
@@ -24,6 +24,18 @@ export const Routes = () => (
     </Route>
     <Route path="/person/edit/:id">
       <PersonEdit />
+    </Route>
+    <Route path="/groups">
+      <Groups />
+    </Route>
+    <Route path="/group/info/:id">
+      <GroupInfo />
+    </Route>
+    <Route path="/group/add">
+      <GroupAdd />
+    </Route>
+    <Route path="/group/edit/:id">
+      <GroupEdit />
     </Route>
   </Switch>
 );
