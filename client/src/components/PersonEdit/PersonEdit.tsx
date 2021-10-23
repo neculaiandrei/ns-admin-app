@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Person, persons } from "../../Data";
+import { Person } from "../../Models";
 import { PersonCard } from "../PersonCard";
+import { StoreContext } from "../../App";
 
 const defaultPerson: Person = {
   id: 0,
@@ -14,6 +15,7 @@ const defaultPerson: Person = {
 };
 
 export const PersonEdit = () => {
+  const data = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
   const [person, setPerson] = useState<Person>({ ...defaultPerson });
@@ -22,12 +24,12 @@ export const PersonEdit = () => {
   const [jobTitle, setJobTitle] = useState("");
 
   useEffect(() => {
-    const p = persons.find(p => p.id === +id);
+    const p = data.persons.find(p => p.id === +id);
 
     if (p) {
       setPerson(p);
     }
-  }, [id]);
+  }, [id, data.persons]);
 
   useEffect(() => {
     setFirstName(person.firstName);

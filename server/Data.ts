@@ -1,26 +1,5 @@
 import faker from 'faker';
-
-export interface Group {
-    id: number;
-    parentId?: number;
-    name: string;
-    dateCreated: string;
-    dateUpdated: string;
-}
-
-export interface Person {
-    id: number;
-    firstName: string;
-    lastName: string;
-    jobTitle: string;
-    dateCreated: string;
-    dateUpdated: string;
-}
-
-export interface GroupPersonLink {
-    groupId: number;
-    personId: number;
-}
+import { Group, GroupPersonLink, Person } from './Models';
 
 const generatePersons = (n: number): Person[] => {
     const result: Person[] = [];
@@ -81,8 +60,13 @@ const generateGroupPersonLink = (persons: Person[], groups: Group[]) => {
     return result;
 };
 
-const persons = generatePersons(100);
-const groups = generateGroup(10);
-const links = generateGroupPersonLink(persons, groups);
 
-export { persons, groups, links };
+export const generateData = (personsCount: number, groupsCount: number) => {
+    const persons = generatePersons(100);
+    const groups = generateGroup(10);
+    const links = generateGroupPersonLink(persons, groups);
+
+    return {
+        persons, groups, links
+    }
+};

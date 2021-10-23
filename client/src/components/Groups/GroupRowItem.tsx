@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { Group } from "../../Data";
+import { Group } from "../../Models";
 
 export interface GroupRowItemProps {
   group: Group,

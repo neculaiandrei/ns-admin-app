@@ -1,10 +1,13 @@
+import { useContext } from "react";
+import { StoreContext } from "../../App";
 import { PersonRowItem } from "./PersonRowItem";
-import { persons } from "../../Data";
 
 export const PersonList = () => {
+  const data = useContext(StoreContext);
+  
   return (
     <ul className="list-group">
-      {persons.map(p => (
+      {data.persons.map(p => (
         <PersonRowItem person={p} key={p.id} />
       ))}
     </ul>

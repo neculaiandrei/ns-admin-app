@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { Group } from "../../Data";
+import { Group } from "../../Models";
 import './GroupsPage.scss';
 
 interface GroupsPageHeaderProps {

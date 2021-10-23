@@ -1,19 +1,20 @@
-import { useCallback, useMemo, useState } from "react";
-import { groups } from "../../Data";
+import { useCallback, useContext, useMemo, useState } from "react";
+import { StoreContext } from "../../App";
 import { GroupList } from "./GroupList";
 import { GroupsPageHeader } from "./GroupsPageHeader";
 
 export const GroupsPage = () => {
   const [parentId, setParentId] = useState<number | undefined>(undefined);
+  const data = useContext(StoreContext);
 
   const group = useMemo(() => {
-    return groups.find(g => g.id === parentId)
-  }, [parentId]);
+    return data.groups.find(g => g.id === parentId)
+  }, [parentId, data.groups]);
 
   const goBack = useCallback(() => {
-    const g = groups.find(g => g.id === parentId);
+    const g = data.groups.find(g => g.id === parentId);
     setParentId(g?.parentId);
-  }, [parentId]);
+  }, [parentId, data.groups]);
 
   return (
     <div className="ns-groups-page">

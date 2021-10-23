@@ -4,7 +4,6 @@ import { App } from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './main.scss';
-import { persons, groups, links } from './Data';
 
 ReactDOM.render(
   <React.StrictMode>

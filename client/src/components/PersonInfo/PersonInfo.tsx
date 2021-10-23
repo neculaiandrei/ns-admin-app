@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Person, persons } from '../../Data';
+import { StoreContext } from "../../App";
+import { Person } from "../../Models";
 import { PersonCard } from "../PersonCard";
 import './PersonInfo.scss';
 
 export const PersonInfo = () => {
+  const data = useContext(StoreContext);
   let { id } = useParams<{ id: string }>();
   const [person, setPerson] = useState<Person>();
   
   useEffect(() => {
-    setPerson(persons.filter(p => p.id === +id)[0]);
-  }, [id]);
+    setPerson(data.persons.filter(p => p.id === +id)[0]);
+  }, [id, data.persons]);
 
   return (
     <PersonCard 

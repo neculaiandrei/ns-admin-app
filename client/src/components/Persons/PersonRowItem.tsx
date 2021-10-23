@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import { Person } from "../../Data";
+import { Person } from "../../Models";
 
 export interface PersonRowItemProps {
   person: Person
