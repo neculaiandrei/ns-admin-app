@@ -16,6 +16,10 @@ export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
   const goToPersonEdit = () => {
     history.push(`/group/edit/${props.group.id}`);
   };
+
+  const goToMove = () => {
+    history.push('/move');
+  };
   
   return (
     <li className="list-group-item ns-list-item">
@@ -29,6 +33,9 @@ export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
         </button>
         <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonEdit}>
           <i className="far fa-edit"></i>
+        </button>
+        <button className="btn btn-default btn-sm ns-btn" onClick={goToMove}>
+          <i className="fas fa-arrows-alt"></i>
         </button>
       </div>
     </li>
