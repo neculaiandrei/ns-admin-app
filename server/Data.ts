@@ -26,7 +26,7 @@ const generateGroup = (n: number): Group[] => {
     for (let i = 0; i < n; i++) {
         const group: Group = {
             id: faker.datatype.number(),
-            name: faker.commerce.department(),
+            name: faker.name.jobArea(),
             dateCreated: faker.date.past(1).toISOString(),
             dateUpdated: faker.date.past(1).toISOString()
         };
@@ -62,8 +62,8 @@ const generateGroupPersonLink = (persons: Person[], groups: Group[]) => {
 
 
 export const generateData = (personsCount: number, groupsCount: number) => {
-    const persons = generatePersons(100);
-    const groups = generateGroup(10);
+    const persons = generatePersons(personsCount);
+    const groups = generateGroup(groupsCount);
     const links = generateGroupPersonLink(persons, groups);
 
     return {
