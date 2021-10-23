@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Person } from "../../Models";
+import { Person } from "../Models";
 import { PersonCard } from "../PersonCard";
 import { StoreContext } from "../App";
 import './PersonEdit.scss';

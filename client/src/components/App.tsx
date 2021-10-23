@@ -7,8 +7,11 @@ import { AppHeader } from './AppHeader';
 import { BottomNav } from './BottomNav';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { StoreData } from '../Models';
+import { StoreData } from './Models';
 import { Routes } from './Routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './main.scss';
 
 const defaultData: StoreData = {
   groups: [],
