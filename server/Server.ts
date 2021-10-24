@@ -15,11 +15,14 @@ var connection = mysql.createConnection({
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get('/api/data', (req, res) => {
-  connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-    console.log('The solution is: ', rows[0].solution)
-  });
   const data = generateData(100, 10);
   res.json(data);
+});
+
+app.get('/api/mysql', (req, res) => {
+  connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+    res.json(rows[0].solution);
+  });
 });
 
 app.get('*', (req, res) => {

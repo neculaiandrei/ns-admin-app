@@ -40,3 +40,5 @@ packages/react-devtools-scheduling-profiler/dist
 deploy-app/
 deploy.bat
 deploy.7z
+config_server.txt
+specs.pdf
