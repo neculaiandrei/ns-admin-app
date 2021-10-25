@@ -1,7 +1,7 @@
 import { AllData } from "../Data";
 import { connection } from "../DbConnection"
 
-const get = (callback: (err, data: AllData) => void) => {
+const get = (callback: (err: any, data?: AllData) => void) => {
   const getSql = `
 select 
 	  id 'id', 
@@ -24,7 +24,7 @@ from ns_admin_app.group;
   connection.query(getSql, (err, res) => {
     if (err) {
       console.log(err.message);
-      callback(err, null)
+      callback(err, undefined);
     } else {
       callback(null, {
         persons: res[0],

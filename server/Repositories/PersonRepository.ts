@@ -1,6 +1,6 @@
 import { connection } from "../DbConnection"
 
-const add = (firstName: string, lastName: string, jobTitle: string, callback: (err, data) => void) => {
+const add = (firstName: string, lastName: string, jobTitle: string, callback: (err: any, data: any) => void) => {
   const insertSql = `
 INSERT INTO ns_admin_app.person
 (first_name, last_name, job_title, date_created, date_updated)

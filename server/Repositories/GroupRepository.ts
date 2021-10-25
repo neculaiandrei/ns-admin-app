@@ -1,13 +1,13 @@
 import { connection } from "../DbConnection"
 
-const add = (name: string, callback: (err, data) => void) => {
+const add = (name: string, callback: (err: any, data: any) => void) => {
   const insertSql = `
 INSERT INTO ns_admin_app.group
 (name, date_created, date_updated)
 VALUES (?, now(), now());
 
 select 
-	  i 'id', 
+	  id 'id', 
     name 'name',
     parentId 'parentId',
     date_created 'dateCreated',
