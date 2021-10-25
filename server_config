@@ -1,0 +1,84 @@
+sudo apt update
+sudo apt install mysql-server
+
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+sudo apt install build-essential
+
+mkdir code
+
+sudo npm install pm2@latest -g
+pm2 startup systemd
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+pm2 save
+sudo systemctl start pm2-ubuntu
+sudo reboot
+sudo systemctl start pm2-ubuntu
+
+touch deploy.sh
+sudo nano deploy.sh
+
+---- deploy.sh
+rm -rd ./code/deploy
+mkdir ./code/deploy
+7z x -y ./code/deploy.7z -o./code/deploy
+----
+
+
+chmod +x deploy.sh
+sudo add-apt-repository universe
+sudo apt install p7zip-full p7zip-rar
+sh deploy.sh
+
+
+cd /usr/lib/node_modules/pm2
+sudo pm2 install typescript
+cd ~
+pm2 start code/deploy/server/Server.ts
+pm2 save
+
+sudo apt install nginx
+
+
+sudo nano /etc/nginx/sites-available/example.com
+
+
+---
+location / {
+        proxy_pass http://localhost:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+---
+
+sudo systemctl restart nginx
+
+sudo mysql_secure_installation
+
+sudo mysql
+
+CREATE DATABASE `ns_admin_app`;
+CREATE USER 'nsadminapp'@'localhost' IDENTIFIED BY 'nsadminapp';
+GRANT ALL PRIVILEGES ON ns_admin_app.* TO 'nsadminapp'@'localhost' WITH GRANT OPTION;
+ALTER USER 'nsadminapp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'nsadminapp';
+flush privileges;
+exit;
+
+pm2 stop Server
+pm2 start Server
+
+---- deploy.sh
+rm -rd ./code/deploy
+mkdir ./code/deploy
+7z x -y ./code/deploy.7z -o./code/deploy
+pm2 stop Server
+pm2 start Server
+----
+
+-- scp dump sql to ubuntu
+sudo mysql
+source /home/ubuntu/DumpXXX.sql
