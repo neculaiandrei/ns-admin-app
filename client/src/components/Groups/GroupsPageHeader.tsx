@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Group } from "../Models";
+import { GroupsNav } from "./GroupsNav";
 import './GroupsPage.scss';
 
 interface GroupsPageHeaderProps {
@@ -25,16 +26,7 @@ export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group, goBac
 
   return (
     <div className="header">
-      <div className="nav">
-        {group ? (
-          <React.Fragment>
-            <span style={{cursor: "pointer"}} onClick={goBack}>
-              <i className="fas fa-arrow-left"></i>
-            </span>
-            <span>&nbsp;&nbsp;{group?.name}</span>
-          </React.Fragment>
-        ) : <div></div>}
-      </div>
+      <GroupsNav group={group} goBack={goBack} />
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToGroupAdd}>
         <i className="fas fa-plus-circle"></i> Add
       </button>
