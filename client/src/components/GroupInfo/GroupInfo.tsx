@@ -25,11 +25,11 @@ export const GroupInfo = () => {
           </p>
           <p className="row">
             <span className="col">Date created</span>
-            <span className="col">{group?.dateCreated}</span>
+            <span className="col">{new Date(group ? group.dateCreated : "").toLocaleString()}</span>
           </p>
           <p className="row">
             <span className="col">Date updated</span>
-            <span className="col">{group?.dateUpdated}</span>
+            <span className="col">{new Date(group ? group.dateUpdated : "").toLocaleString()}</span>
           </p>
         </React.Fragment>
     </GroupCard>
