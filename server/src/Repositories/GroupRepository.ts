@@ -7,7 +7,7 @@ INSERT INTO ns_admin_app.group
 VALUES (?, ?, now(), now());
 
 select 
-	  id 'id', 
+    id 'id', 
     name 'name',
     parent_id 'parentId',
     date_created 'dateCreated',
@@ -33,7 +33,7 @@ set name = ?, date_updated = now()
 where id = ?;
 
 select 
-	  id 'id', 
+    id 'id', 
     name 'name',
     parent_id 'parentId',
     date_created 'dateCreated',

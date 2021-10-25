@@ -7,7 +7,7 @@ INSERT INTO ns_admin_app.person
 VALUES (?, ?, ?, now(), now());
 
 select 
-	  id 'id', 
+    id 'id', 
     first_name 'firstName',
     last_name 'lastName',
     job_title 'jobTitle',
@@ -34,7 +34,7 @@ set first_name = ?, last_name = ?, job_title = ?, date_updated = now()
 where id = ?;
 
 select 
-	  id 'id', 
+    id 'id', 
     first_name 'firstName',
     last_name 'lastName',
     job_title 'jobTitle',
