@@ -43,28 +43,8 @@
     }
 }
 
-.ns-list-item {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    border-left: none;
-    border-right: none;
-
-    button {
-      font-size: 1.2em;
-    }
-}
-
 .ns-btn:focus {
   box-shadow: none !important;
-}
-
-.ns-list-item:first-child {
-  border-top: none;
-}
-
-.ns-list-item:last-child {
-  border-bottom: none;
 }
 
 ::-webkit-scrollbar {

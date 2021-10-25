@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { useGroupParentIdParam } from '../../hooks/useGroupParentIdParam';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
-import { GroupCard } from '../GroupCard';
+import { GroupCard } from '../common/GroupCard';
 import './GroupAdd.scss';
 
 export const GroupAdd = () => {

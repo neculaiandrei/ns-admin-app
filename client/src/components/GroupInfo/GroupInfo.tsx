@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../App";
 import { Group } from "../Models";
-import { GroupCard } from "../GroupCard";
+import { GroupCard } from "../common/GroupCard";
 import './GroupInfo.scss';
 
 export const GroupInfo = () => {

@@ -1,0 +1,15 @@
+.list-group-item.ns-list-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-left: none;
+  border-right: none;
+
+  button {
+    font-size: 1.2em;
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+}

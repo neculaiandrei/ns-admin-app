@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
+import { ListItem, ListItemButton } from "../common/ListItem";
 import { Group } from "../Models";
 
 export interface GroupRowItemProps {
-  group: Group,
-  onSelect: (id: number) => void
+  group: Group
 };
 
 export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
@@ -20,24 +20,22 @@ export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
   const goToMove = () => {
     history.push('/move');
   };
+
+  const goToGroup = () => {
+    history.push(`/groups/${props.group.id}`);
+  };
   
   return (
-    <li className="list-group-item ns-list-item">
-      <div className="ns-list-item-info-group" onClick={() => props.onSelect(props.group.id)}>
+    <ListItem>
+      <div className="ns-list-item-info-group" onClick={goToGroup}>
         <i className="fas fa-users"></i>
         {props.group.name}
       </div>
       <div>
-        <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonDetail}>
-          <i className="fas fa-info-circle"></i>
-        </button>
-        <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonEdit}>
-          <i className="far fa-edit"></i>
-        </button>
-        <button className="btn btn-default btn-sm ns-btn" onClick={goToMove}>
-          <i className="fas fa-arrows-alt"></i>
-        </button>
+        <ListItemButton iconClassName="fas fa-info-circle" onClick={goToPersonDetail} />
+        <ListItemButton iconClassName="far fa-edit" onClick={goToPersonEdit} />
+        <ListItemButton iconClassName="fas fa-arrows-alt" onClick={goToMove} />
       </div>
-    </li>
+    </ListItem>
   );
 };

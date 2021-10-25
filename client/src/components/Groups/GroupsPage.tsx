@@ -40,14 +40,10 @@ export const GroupsPage = () => {
     }
   }, [groupParentId, data.groups]);
 
-  const goForward = (id: number) => {
-    history.push(`/groups/${id}`);
-  };
-
   return (
     <div className="ns-groups-page">
       <GroupsPageHeader group={group} goBack={goBack} />
-      <GroupList groups={groups} persons={persons} onSelect={goForward}/>
+      <GroupList groups={groups} persons={persons} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Person } from "../Models";
-import { PersonCard } from "../PersonCard";
+import { PersonCard } from "../common/PersonCard";
 import { StoreContext } from "../App";
 import './PersonEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";

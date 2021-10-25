@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
-import { PersonCard } from '../PersonCard';
+import { PersonCard } from '../common/PersonCard';
 import './PersonAdd.scss';
 
 export const PersonAdd = () => {

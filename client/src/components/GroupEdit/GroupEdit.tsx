@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Group } from "../Models";
 import { StoreContext } from "../App";
-import { GroupCard } from "../GroupCard";
+import { GroupCard } from "../common/GroupCard";
 import './GroupEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
 import { replaceItemInArrayBy } from "../../utils/arrayUtils";

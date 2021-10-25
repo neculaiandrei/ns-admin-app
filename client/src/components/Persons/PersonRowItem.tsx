@@ -1,4 +1,5 @@
 import { useHistory } from "react-router";
+import { ListItem, ListItemButton } from "../common/ListItem";
 import { Person } from "../Models";
 
 export interface PersonRowItemProps {
@@ -17,19 +18,15 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
   };
 
   return (
-    <li className="list-group-item ns-list-item">
+    <ListItem>
       <div className="ns-list-item-info">
         <span>{person.firstName} {person.lastName}</span>
         <span>{person.jobTitle}</span>
       </div>
       <div>
-        <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonDetail}>
-          <i className="fas fa-info-circle"></i>
-        </button>
-        <button className="btn btn-default btn-sm ns-btn" onClick={goToPersonEdit}>
-          <i className="far fa-edit"></i>
-        </button>
+        <ListItemButton iconClassName="fas fa-info-circle" onClick={goToPersonDetail} />
+        <ListItemButton iconClassName="far fa-edit" onClick={goToPersonEdit} />
       </div>
-    </li>
+    </ListItem>
   );
 };
