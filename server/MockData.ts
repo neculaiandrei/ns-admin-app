@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { Group, GroupPersonLink, Person } from './Models';
+import { AggregateData, Group, GroupPersonLink, Person } from './Models';
 
 const generatePersons = (n: number): Person[] => {
     const result: Person[] = [];
@@ -61,18 +61,12 @@ const generateGroupPersonLink = (persons: Person[], groups: Group[]) => {
     return result;
 };
 
-export interface AllData {
-    persons: Person[],
-    groups: Group[],
-    links: GroupPersonLink[]
-};
-
-export const generateData = (personsCount: number, groupsCount: number): AllData => {
+export const generateData = (personsCount: number, groupsCount: number): AggregateData => {
     const persons = generatePersons(personsCount);
     const groups = generateGroup(groupsCount);
     const links = generateGroupPersonLink(persons, groups);
 
     return {
         persons, groups, links
-    }
+    };
 };

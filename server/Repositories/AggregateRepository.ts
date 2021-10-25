@@ -1,7 +1,7 @@
-import { AllData } from "../Data";
 import { connection } from "../DbConnection"
+import { AggregateData } from "../Models";
 
-const get = (callback: (err: any, data?: AllData) => void) => {
+const get = (callback: (err: any, data?: AggregateData) => void) => {
   const getSql = `
 select 
 	  id 'id', 
