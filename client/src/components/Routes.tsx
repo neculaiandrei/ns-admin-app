@@ -25,7 +25,7 @@ export const Routes = () => (
     <Route path="/person/edit/:id">
       <PersonEdit />
     </Route>
-    <Route path="/groups/:parentId">
+    <Route path="/groups/:groupParentId">
       <Groups />
     </Route>
     <Route path="/groups">
@@ -33,6 +33,9 @@ export const Routes = () => (
     </Route>
     <Route path="/group/info/:id">
       <GroupInfo />
+    </Route>
+    <Route path="/group/add/:groupParentId">
+      <GroupAdd />
     </Route>
     <Route path="/group/add">
       <GroupAdd />

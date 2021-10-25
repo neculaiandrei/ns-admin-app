@@ -11,8 +11,12 @@ interface GroupsPageHeaderProps {
 export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group, goBack }) => {
   const history = useHistory();
 
-  const goToPersonAdd = () => {
-    history.push("/group/add");
+  const goToGroupAdd = () => {
+    if (group) {
+      history.push(`/group/add/${group.id}`);
+    } else {
+      history.push(`/group/add/`);
+    }
   };
 
   const goToPersonsLink = () => {
@@ -31,7 +35,7 @@ export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group, goBac
           </React.Fragment>
         ) : <div></div>}
       </div>
-      <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonAdd}>
+      <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToGroupAdd}>
         <i className="fas fa-plus-circle"></i> Add
       </button>
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonsLink}>

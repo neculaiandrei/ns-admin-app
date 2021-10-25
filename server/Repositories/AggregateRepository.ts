@@ -15,7 +15,7 @@ from ns_admin_app.person;
 select 
 	  id 'id', 
     name 'name',
-    parentId 'parentId',
+    parent_id 'parentId',
     date_created 'dateCreated',
     date_updated 'dateUpdated'
 from ns_admin_app.group;
@@ -35,8 +35,30 @@ from ns_admin_app.group;
   });
 };
 
+const del = (callback: (err: any, res: any) => void) => {
+  const getSql = `
+delete from ns_admin_app.group_person;
+delete from ns_admin_app.person;
+
+update ns_admin_app.group
+set parent_id = NULL;
+
+delete from ns_admin_app.group;
+  `;
+
+  connection.query(getSql, (err, res) => {
+    if (err) {
+      console.log(err.message);
+      callback(err, undefined);
+    } else {
+      callback(null, true);
+    }
+  });
+};
+
 const AggregateRepository = {
-  get
+  get,
+  del
 };
 
 export default AggregateRepository;

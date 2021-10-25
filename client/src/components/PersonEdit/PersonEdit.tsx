@@ -5,6 +5,8 @@ import { Person } from "../Models";
 import { PersonCard } from "../PersonCard";
 import { StoreContext } from "../App";
 import './PersonEdit.scss';
+import { safeFetch } from "../../utils/fetchUtils";
+import { replaceItemInArrayBy } from "../../utils/arrayUtils";
 
 const defaultPerson: Person = {
   id: 0,
@@ -16,7 +18,7 @@ const defaultPerson: Person = {
 };
 
 export const PersonEdit = () => {
-  const { data } = useContext(StoreContext);
+  const { data, setData } = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
   const [person, setPerson] = useState<Person>({ ...defaultPerson });
@@ -38,15 +40,28 @@ export const PersonEdit = () => {
     setJobTitle(person.jobTitle);
   }, [person]);
 
-  const goToPersons = () => {
-    history.push("/persons")
+  const save = () => {
+    safeFetch('/api/person', {
+      method: 'PUT',
+      body: JSON.stringify({ firstName, lastName, jobTitle, id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(newPerson => {
+      setData({
+        ...data,
+        persons: replaceItemInArrayBy(data.persons, 'id', person.id, newPerson)
+      });
+  
+      history.push('/persons');
+    });
   };
 
   return (
     <PersonCard
       title={`${person.firstName} ${person.lastName}`}
       className="ns-person-edit-card">
-      <React.Fragment>
+      <form onSubmit={e => e.preventDefault()}>
         <div>
           <label className="form-label">First name</label>
           <input type="text" className="form-control" value={firstName} onChange={e => setFirstName(e.currentTarget.value)} />
@@ -59,10 +74,10 @@ export const PersonEdit = () => {
           <label className="form-label">Job title</label>
           <input type="text" className="form-control" value={jobTitle} onChange={e => setJobTitle(e.currentTarget.value)} />
         </div>
-        <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersons}>
+        <button className="btn btn-primary ns-btn ns-btn-primary" onClick={save}>
           Save
         </button>
-      </React.Fragment>
+      </form>
     </PersonCard>
   );
 }

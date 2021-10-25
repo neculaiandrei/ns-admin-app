@@ -5,8 +5,10 @@ import { Group } from "../Models";
 import { StoreContext } from "../App";
 import { GroupCard } from "../GroupCard";
 import './GroupEdit.scss';
+import { safeFetch } from "../../utils/fetchUtils";
+import { replaceItemInArrayBy } from "../../utils/arrayUtils";
 
-const defaultPerson: Group = {
+const defaultGroup: Group = {
   id: 0,
   name: '',
   parentId: null,
@@ -15,10 +17,10 @@ const defaultPerson: Group = {
 };
 
 export const GroupEdit = () => {
-  const { data } = useContext(StoreContext);
+  const { data, setData } = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
-  const [group, setGroup] = useState<Group>({ ...defaultPerson });
+  const [group, setGroup] = useState<Group>({ ...defaultGroup });
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -33,23 +35,40 @@ export const GroupEdit = () => {
     setName(group.name);
   }, [group]);
 
-  const goToGroups = () => {
-    history.push("/groups")
+  const save = () => {
+    safeFetch('/api/group', {
+      method: 'PUT',
+      body: JSON.stringify({ name, id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(newGroup => {
+      setData({
+        ...data,
+        groups: replaceItemInArrayBy(data.groups, 'id', group.id, newGroup)
+      });
+  
+      if (group.parentId) {
+        history.push(`/groups/${group.parentId}`);
+      } else {
+        history.push('/groups');
+      }
+    });
   };
 
   return (
     <GroupCard
       title={`${group.name}`}
       className="ns-group-edit-card">
-      <React.Fragment>
+      <form onSubmit={e => e.preventDefault()}>
         <div>
           <label className="form-label">Name</label>
           <input type="text" className="form-control" value={name} onChange={e => setName(e.currentTarget.value)} />
         </div>
-        <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToGroups}>
+        <button className="btn btn-primary ns-btn ns-btn-primary" onClick={save}>
           Save
         </button>
-      </React.Fragment>
+      </form>
     </GroupCard>
   );
 }

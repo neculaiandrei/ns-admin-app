@@ -36,7 +36,7 @@ export const PersonAdd = () => {
     <PersonCard
       title="Add Person"
       className="ns-person-add-card">
-      <React.Fragment>
+      <form onSubmit={e => e.preventDefault()}>
         <div>
           <label className="form-label">First name</label>
           <input type="text" className="form-control" value={firstName} onChange={e => setFirstName(e.currentTarget.value)} />
@@ -52,7 +52,7 @@ export const PersonAdd = () => {
         <button className="btn btn-primary ns-btn ns-btn-primary" onClick={save}>
           Save
         </button>
-      </React.Fragment>
+      </form>
     </PersonCard>
   );;
 }

@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { useGroupParentIdParam } from '../../hooks/useGroupParentIdParam';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { GroupCard } from '../GroupCard';
 import './GroupAdd.scss';
 
 export const GroupAdd = () => {
+  const groupParentId = useGroupParentIdParam();
   const { data, setData } = useContext(StoreContext);
   const history = useHistory();
   const [name, setName] = useState("");
@@ -13,7 +15,7 @@ export const GroupAdd = () => {
   const save = () => {
     safeFetch('/api/group', {
       method: 'POST',
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name, parentId: groupParentId }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -26,7 +28,11 @@ export const GroupAdd = () => {
         ]
       });
 
-      history.push('/groups');
+      if (groupParentId) {
+        history.push(`/groups/${groupParentId}`);
+      } else {
+        history.push('/groups');
+      }
     });
   };
 
@@ -34,7 +40,7 @@ export const GroupAdd = () => {
     <GroupCard
       title="Add Group"
       className="ns-group-add-card">
-      <React.Fragment>
+      <form onSubmit={e => e.preventDefault()}>
         <div>
           <label className="form-label">Name</label>
           <input type="text" className="form-control" value={name} onChange={e => setName(e.currentTarget.value)} />
@@ -42,7 +48,7 @@ export const GroupAdd = () => {
         <button className="btn btn-primary ns-btn ns-btn-primary" onClick={save}>
           Save
         </button>
-      </React.Fragment>
+      </form>
     </GroupCard>
   );;
 }
