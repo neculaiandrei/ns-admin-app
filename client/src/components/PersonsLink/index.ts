@@ -1,0 +1,1 @@
+export { PersonsLink } from './PersonsLink';

@@ -38,7 +38,7 @@ export const GroupsPage = () => {
     } else {
       history.push('/groups');
     }
-  }, [groupParentId, data.groups]);
+  }, [groupParentId, data.groups, history]);
 
   return (
     <div className="ns-groups-page">

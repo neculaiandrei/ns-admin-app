@@ -1,0 +1,52 @@
+@import '../colors.scss';
+
+.ns-persons-page {
+  margin: auto 1%;
+
+  .header {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    & {
+      margin: auto 8%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    & {
+      margin: auto 16%;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    & {
+      margin: auto 24%;
+    }
+  }
+
+  .ns-list-item {
+    .ns-list-item-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        > span:last-child {
+          font-size: 0.7em;
+        }
+    }
+  }
+
+  .ns-btn-primary {
+    background-color: $lightBlue;
+    border: none;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $darkBlue;
+    }
+  }
+}

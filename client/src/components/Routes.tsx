@@ -7,11 +7,15 @@ import { PersonAdd } from "./PersonAdd";
 import { PersonEdit } from "./PersonEdit";
 import { PersonInfo } from "./PersonInfo";
 import { Persons } from "./Persons";
+import { PersonsLink } from "./PersonsLink";
 
 export const Routes = () => (
   <Switch>
     <Route exact path="/">
       <Persons />
+    </Route>
+    <Route path="/persons/link/:groupId">
+      <PersonsLink />
     </Route>
     <Route path="/persons">
       <Persons />

@@ -21,7 +21,7 @@ export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group, goBac
   };
 
   const goToPersonsLink = () => {
-    history.push("/persons/link");
+    history.push(`/persons/link/${group?.id}`);
   };
 
   return (
@@ -30,9 +30,10 @@ export const GroupsPageHeader: React.FC<GroupsPageHeaderProps> = ({ group, goBac
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToGroupAdd}>
         <i className="fas fa-plus-circle"></i> Add
       </button>
+      {group && (
       <button className="btn btn-primary ns-btn ns-btn-primary" onClick={goToPersonsLink}>
         <i className="fas fa-link"></i> Link
-      </button>
+      </button>)}
     </div>
   );
 }

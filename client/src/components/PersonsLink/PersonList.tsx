@@ -1,8 +1,8 @@
 import React from "react";
-import { Person } from "../Models";
 import { PersonRowItem } from "./PersonRowItem";
+import { CheckedPerson } from "./PersonsLink";
 
-export const PersonList: React.FC<{ persons: Person[] }> = (props) => {
+export const PersonList: React.FC<{ persons: CheckedPerson[]}> = (props) => {
   return (
     <ul className="list-group">
       {props.persons.map(p => (
