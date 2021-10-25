@@ -1,6 +1,6 @@
 export interface Group {
   id: number;
-  parentId?: number;
+  parentId: number | null;
   name: string;
   dateCreated: string;
   dateUpdated: string;

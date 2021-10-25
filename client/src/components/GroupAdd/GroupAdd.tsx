@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { GroupCard } from '../GroupCard';
 import './GroupAdd.scss';
@@ -10,20 +11,23 @@ export const GroupAdd = () => {
   const [name, setName] = useState("");
 
   const save = () => {
-    setData({
-      ...data,
-      groups: [
-        ...data.groups,
-        {
-          id: Math.floor(Math.random() * 100),
-          name: name,
-          dateCreated: Date.now().toString(),
-          dateUpdated: Date.now().toString()
-        }
-      ]
-    });
+    safeFetch('/api/group', {
+      method: 'POST',
+      body: JSON.stringify({ name }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(group => {
+      setData({
+        ...data,
+        groups: [
+          ...data.groups,
+          group
+        ]
+      });
 
-    history.push('/groups');
+      history.push('/groups');
+    });
   };
 
   return (

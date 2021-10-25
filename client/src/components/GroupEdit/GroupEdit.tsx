@@ -9,6 +9,7 @@ import './GroupEdit.scss';
 const defaultPerson: Group = {
   id: 0,
   name: '',
+  parentId: null,
   dateCreated: '',
   dateUpdated: '',
 };

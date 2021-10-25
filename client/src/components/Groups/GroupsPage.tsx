@@ -8,11 +8,11 @@ const useParentIdParam = () => {
   const { parentId } = useParams<{ parentId: string }>();
 
   if (parentId === undefined || parentId === null) {
-    return undefined;
+    return null;
   }
   
   const isNum = /^\d+$/.test(parentId);
-  return isNum ? +parentId : undefined;
+  return isNum ? +parentId : null;
 };
 
 export const GroupsPage = () => {

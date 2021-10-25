@@ -5,7 +5,7 @@ import { GroupRowItem } from "./GroupRowItem";
 import { PersonRowItem } from "./PersonRowItem";
 
 interface GroupListProps {
-  parentId?: number;
+  parentId: number | null;
   onSelect: (id: number) => void;
 }
 

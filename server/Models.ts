@@ -1,6 +1,6 @@
 export interface Group {
   id: number;
-  parentId?: number;
+  parentId: number | null;
   name: string;
   dateCreated: string;
   dateUpdated: string;
@@ -18,4 +18,10 @@ export interface Person {
 export interface GroupPersonLink {
   groupId: number;
   personId: number;
+}
+
+export interface AggregateData {
+  persons: Person[];
+  groups: Group[];
+  links: GroupPersonLink[];
 }

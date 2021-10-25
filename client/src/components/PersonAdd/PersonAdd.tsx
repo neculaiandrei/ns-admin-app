@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { PersonCard } from '../PersonCard';
 import './PersonAdd.scss';
@@ -12,22 +13,23 @@ export const PersonAdd = () => {
   const [jobTitle, setJobTitle] = useState("");
 
   const save = () => {
-    setData({
-      ...data,
-      persons: [
-        ...data.persons,
-        {
-          id: Math.floor(Math.random() * 100),
-          firstName: firstName,
-          lastName: lastName,
-          jobTitle: jobTitle,
-          dateCreated: '...',
-          dateUpdated: '...'
-        }
-      ]
+    safeFetch('/api/person', {
+      method: 'POST',
+      body: JSON.stringify({ firstName, lastName, jobTitle }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(person => {
+      setData({
+        ...data,
+        persons: [
+          ...data.persons,
+          person
+        ]
+      });
+  
+      history.push('/persons');
     });
-
-    history.push('/persons');
   };
 
   return (

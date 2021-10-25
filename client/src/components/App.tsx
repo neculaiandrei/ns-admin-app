@@ -7,11 +7,14 @@ import { AppHeader } from './AppHeader';
 import { BottomNav } from './BottomNav';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { StoreData } from './Models';
 import { Routes } from './Routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './main.scss';
+import { safeFetch } from '../utils/fetchUtils';
 
 const defaultData: StoreData = {
   groups: [],
@@ -33,8 +36,7 @@ export const App = () => {
   const [data, setData] = useState<StoreData>({...defaultData});
 
   useEffect(() => {
-    fetch('/api/data')
-      .then(result => result.json())
+    safeFetch('/api/data')
       .then(setData);
   }, []);
   
@@ -50,6 +52,7 @@ export const App = () => {
             </StoreContext.Provider>
           </div>
           {size && size.width <= 768 && <BottomNav />}
+          <ToastContainer />
         </div>
       </div>
     </BrowserRouter>
