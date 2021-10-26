@@ -33,8 +33,18 @@ CREATE TABLE `group` (
   PRIMARY KEY (`id`),
   KEY `group_parent_id_fk_idx` (`parent_id`),
   CONSTRAINT `group_parent_id_fk` FOREIGN KEY (`parent_id`) REFERENCES `group` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group`
+--
+
+LOCK TABLES `group` WRITE;
+/*!40000 ALTER TABLE `group` DISABLE KEYS */;
+INSERT INTO `group` VALUES (28,'Andrei 55','2021-10-26 13:05:51','2021-10-26 13:16:19',NULL),(31,'RRR','2021-10-26 13:12:40','2021-10-26 13:12:40',NULL),(32,'Level 0','2021-10-26 13:16:11','2021-10-26 13:16:11',28);
+/*!40000 ALTER TABLE `group` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `group_person`
@@ -55,6 +65,15 @@ CREATE TABLE `group_person` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `group_person`
+--
+
+LOCK TABLES `group_person` WRITE;
+/*!40000 ALTER TABLE `group_person` DISABLE KEYS */;
+/*!40000 ALTER TABLE `group_person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `person`
 --
 
@@ -69,8 +88,17 @@ CREATE TABLE `person` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person`
+--
+
+LOCK TABLES `person` WRITE;
+/*!40000 ALTER TABLE `person` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -81,4 +109,4 @@ CREATE TABLE `person` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-25 20:45:12
+-- Dump completed on 2021-10-26 13:17:17
