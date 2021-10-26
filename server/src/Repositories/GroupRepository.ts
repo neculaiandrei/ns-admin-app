@@ -77,13 +77,17 @@ where id = ?
 };
 
 const link = (groupId: number, personIds: number[], callback: repositoryCallback) => {
+  const insertParams = personIds.map(personId => [ personId, groupId ]);
+  
   const linkSql = `
 delete from ns_admin_app.group_person
 where group_id = ?;
 
+${insertParams.length ? `
 insert into ns_admin_app.group_person
 (person_id, group_id)
 values ?;
+`: `select 1;`} 
 
 update ns_admin_app.group
 set date_updated = now()
@@ -94,10 +98,12 @@ from ns_admin_app.group
 where id = ?;
   `;
 
-  const insertParams = personIds.map(personId => [ personId, groupId ]);
-  
+  const moveParams = insertParams.length ? 
+    [groupId, insertParams, groupId, groupId] :
+    [groupId, groupId, groupId];
+
   connection.beginTransaction(() => {
-    connection.query(linkSql, [groupId, insertParams, groupId, groupId], (sqlErr, res) => {
+    connection.query(linkSql, moveParams, (sqlErr, res) => {
       if (sqlErr) {
         console.log(sqlErr.message);
         connection.rollback(tranErr => {
