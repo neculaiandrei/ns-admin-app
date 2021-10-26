@@ -75,7 +75,7 @@ export const PersonsLink = () => {
   };
 
   return (
-    <div className="ns-persons-page">
+    <div className="ns-persons-link-page">
         <PersonsLinkHeader save={save} saveDisabled={data.persons.length === 0} />
         <PersonList persons={persons} onCheck={onCheck} />
     </div>
