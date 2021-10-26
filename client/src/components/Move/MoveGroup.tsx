@@ -81,7 +81,7 @@ export const MoveGroup = () => {
 
       if (groupToMove.parentId) {
         const fromGroupToMove = data.groups.find(g => g.id === groupToMove.parentId) as Group;
-        
+
         const newFromGroupToMove: Group = {...fromGroupToMove, dateUpdated: fromResult.dateUpdated };
         newGroups = replaceItemBy(newGroups, 'id', fromGroupToMove.id, newFromGroupToMove);
       }
@@ -104,13 +104,18 @@ export const MoveGroup = () => {
     });
   };
 
+  const cancel = () => {
+    history.goBack();
+  };
+
   return (
     <div className="ns-move-page">
       <MoveHeader 
         group={toGroup} 
         goBack={goBack} 
         saveDisabled={groupToMove.parentId === (toGroup ? toGroup.id : null)}
-        save={save} />
+        save={save}
+        cancel={cancel} />
       <GroupList groupToMove={groupToMove} groups={groups} persons={persons} onGroupSelect={onGroupSelect} />
     </div>
   );

@@ -110,13 +110,18 @@ export const MovePerson = () => {
     });
   };
 
+  const cancel = () => {
+    history.goBack();
+  };
+
   return (
     <div className="ns-move-page">
       <MoveHeader 
         group={toGroup} 
         goBack={goBack} 
         saveDisabled={saveDisabled()}
-        save={save} />
+        save={save}
+        cancel={cancel} />
       <GroupList groups={groups} persons={persons} onGroupSelect={onGroupSelect} />
     </div>
   );
