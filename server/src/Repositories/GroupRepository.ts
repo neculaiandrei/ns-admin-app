@@ -52,9 +52,40 @@ where id = ?
   });
 };
 
+const link = (groupId: number, personIds: number[], callback: (err: any, data: any) => void) => {
+  const linkSql = `
+delete from ns_admin_app.group_person
+where group_id = ?;
+
+insert into ns_admin_app.group_person
+(person_id, group_id)
+values ?;
+
+update ns_admin_app.group
+set date_updated = now()
+where id = ?;
+
+select date_updated 'dateUpdated'
+from ns_admin_app.group
+where id = ?;
+  `;
+
+  const insertParams = personIds.map(personId => [ personId, groupId ]);
+  
+  connection.query(linkSql, [groupId, insertParams, groupId, groupId], (err, res) => {
+    if (err) {
+      console.log(err.message);
+      callback(err, null)
+    } else {
+      callback(null, res[3][0]);
+    }
+  });
+}
+
 const GroupRepository = {
   add,
-  update
+  update,
+  link
 };
 
 export default GroupRepository;

@@ -37,6 +37,10 @@
           font-size: 0.7em;
         }
     }
+
+    input[type=checkbox] {
+      transform: scale(1.6);
+    }
   }
 
   .ns-btn-primary {

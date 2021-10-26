@@ -85,4 +85,17 @@ export const useApiRoutes = (app: express.Application) => {
       }
     });
   });
+
+  app.post('/api/group/link', (req, res) => {
+    const groupId = req.body.groupId;
+    const personIds = req.body.personIds;
+
+    GroupRepository.link(groupId, personIds, (err, data) => {
+      if (err) {
+        res.status(500).send();
+      } else {
+        res.json(data);
+      }
+    });
+  });
 };

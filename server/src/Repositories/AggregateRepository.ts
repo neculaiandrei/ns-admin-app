@@ -19,6 +19,11 @@ select
     date_created 'dateCreated',
     date_updated 'dateUpdated'
 from ns_admin_app.group;
+
+select 
+	  group_id 'groupId', 
+    person_id 'personId'
+from ns_admin_app.group_person;
   `;
 
   connection.query(getSql, (err, res) => {
@@ -29,7 +34,7 @@ from ns_admin_app.group;
       callback(null, {
         persons: res[0],
         groups: res[1],
-        links: []
+        links: res[2]
       });
     }
   });

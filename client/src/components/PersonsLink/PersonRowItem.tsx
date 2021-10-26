@@ -1,11 +1,12 @@
 import { ListItem } from "../common/ListItem";
-import { CheckedPerson } from "./PersonsLink";
+import { LinkedPerson } from "./PersonsLink";
 
 export interface PersonRowItemProps {
-  person: CheckedPerson
+  person: LinkedPerson,
+  onCheck: (id: number) => void;
 }
 
-export const PersonRowItem = ({ person }: PersonRowItemProps) => {
+export const PersonRowItem = ({ person, onCheck }: PersonRowItemProps) => {
   return (
     <ListItem>
       <div className="ns-list-item-info">
@@ -13,7 +14,7 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
         <span>{person.jobTitle}</span>
       </div>
       <div>
-        <input type="checkbox" checked={person.checked}></input>
+        <input type="checkbox" checked={person.linked} onChange={() => onCheck(person.id)}></input>
       </div>
     </ListItem>
   );
