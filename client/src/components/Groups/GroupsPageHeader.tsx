@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router";
 import { Group } from "../Models";
 import { GroupsNav } from "./GroupsNav";
-import './GroupsPage.scss';
 
 interface GroupsPageHeaderProps {
   group?: Group;

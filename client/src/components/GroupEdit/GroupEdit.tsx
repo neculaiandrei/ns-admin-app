@@ -6,7 +6,7 @@ import { StoreContext } from "../App";
 import { GroupCard } from "../common/GroupCard";
 import './GroupEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
-import { replaceItemInArrayBy } from "../../utils/arrayUtils";
+import { replaceItemBy } from "../../utils/arrayUtils";
 
 const defaultGroup: Group = {
   id: 0,
@@ -45,7 +45,7 @@ export const GroupEdit = () => {
     }).then(newGroup => {
       setData({
         ...data,
-        groups: replaceItemInArrayBy(data.groups, 'id', group.id, newGroup)
+        groups: replaceItemBy(data.groups, 'id', group.id, newGroup)
       });
   
       if (group.parentId) {

@@ -1,0 +1,97 @@
+@import '../colors.scss';
+
+.ns-move-page {
+  margin: auto 1%;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 16px;
+
+    .nav {
+      flex-grow: 1;
+      flex-wrap: nowrap;
+      margin-right: 8px;
+      overflow: hidden;
+      font-size: 1.4em;
+      font-weight: 400;
+
+      span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    button {
+      margin-right: 8px;
+
+      flex-shrink: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &[disabled=true], &[disabled] {
+        background-color: #AAA !important;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    & {
+      margin: auto 8%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    & {
+      margin: auto 16%;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    & {
+      margin: auto 24%;
+    }
+  }
+
+  .ns-list-item {
+    .ns-list-item-info-person {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        color: #AAA;
+        
+        > span:last-child {
+          font-size: 0.7em;
+        }
+    }
+
+    .ns-list-item-info-group {
+      flex-grow: 1;
+      cursor: pointer;
+
+      &.disabled {
+        color: #AAA;
+      }
+
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .ns-btn-primary {
+    background-color: $lightYellow;
+    border: none;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $darkYellow;
+    }
+  }
+}

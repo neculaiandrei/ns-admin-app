@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { replaceItemInArrayBy } from "../../utils/arrayUtils";
+import { replaceItemBy } from "../../utils/arrayUtils";
 import { safeFetch } from "../../utils/fetchUtils";
 import { StoreContext } from "../App";
 import { Person } from "../Models";
@@ -38,7 +38,7 @@ export const PersonsLink = () => {
 
     if (updatedPerson) {
       updatedPerson = { ...updatedPerson, linked: !updatedPerson.linked };
-      setPersons(replaceItemInArrayBy(persons, 'id', id, updatedPerson))
+      setPersons(replaceItemBy(persons, 'id', id, updatedPerson))
     }
   };
 
@@ -67,7 +67,7 @@ export const PersonsLink = () => {
       setData({
         ...data,
         links: newLinks,
-        groups: replaceItemInArrayBy(data.groups, 'id', groupId, newGroup)
+        groups: replaceItemBy(data.groups, 'id', groupId, newGroup)
       });
 
       history.push(`/groups/${groupId}`);

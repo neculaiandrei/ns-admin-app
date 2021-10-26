@@ -6,7 +6,7 @@ import { PersonCard } from "../common/PersonCard";
 import { StoreContext } from "../App";
 import './PersonEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
-import { replaceItemInArrayBy } from "../../utils/arrayUtils";
+import { replaceItemBy } from "../../utils/arrayUtils";
 
 const defaultPerson: Person = {
   id: 0,
@@ -50,7 +50,7 @@ export const PersonEdit = () => {
     }).then(newPerson => {
       setData({
         ...data,
-        persons: replaceItemInArrayBy(data.persons, 'id', person.id, newPerson)
+        persons: replaceItemBy(data.persons, 'id', person.id, newPerson)
       });
   
       history.push('/persons');

@@ -5,6 +5,7 @@ import { StoreContext } from "../App";
 import { Group, Person } from "../Models";
 import { GroupList } from "./GroupList";
 import { GroupsPageHeader } from "./GroupsPageHeader";
+import './GroupsPage.scss';
 
 
 export const GroupsPage = () => {

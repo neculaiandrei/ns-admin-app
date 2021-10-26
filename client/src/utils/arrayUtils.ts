@@ -6,7 +6,7 @@
  * @param replaceItem 
  * @returns new array
  */
-export const replaceItemInArrayBy = (
+export const replaceItemBy = (
   arr: any[], 
   key: string, 
   value: any, 

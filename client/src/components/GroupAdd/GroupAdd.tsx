@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useGroupParentIdParam } from '../../hooks/useGroupParentIdParam';
-import { replaceItemInArrayBy } from '../../utils/arrayUtils';
+import { replaceItemBy } from '../../utils/arrayUtils';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { GroupCard } from '../common/GroupCard';
@@ -30,7 +30,7 @@ export const GroupAdd = () => {
 
         const newParentGrup = { ...parentGroup, dateUpdated: obj.dateUpdated };
         let newGroups = [...data.groups, group];
-        newGroups = replaceItemInArrayBy(newGroups, 'id', groupParentId, newParentGrup);
+        newGroups = replaceItemBy(newGroups, 'id', groupParentId, newParentGrup);
 
         setData({
           ...data,

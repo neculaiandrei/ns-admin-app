@@ -1,6 +1,8 @@
 import { connection } from "../DbConnection"
 
-const add = (name: string, parentId: number | null, callback: (err: any, data: any) => void) => {
+type repositoryCallback = (err: any, data: any) => void;
+
+const add = (name: string, parentId: number | null, callback: repositoryCallback) => {
   const insertSql = `
 INSERT INTO ns_admin_app.group
 (name, parent_id, date_created, date_updated)
@@ -48,7 +50,7 @@ where id = ?;
   });
 };
 
-const update = (id: number, name: string, callback: (err: any, data: any) => void) => {
+const update = (id: number, name: string, callback: repositoryCallback) => {
   const updateSql = `
 update ns_admin_app.group
 set name = ?, date_updated = now()
@@ -74,7 +76,7 @@ where id = ?
   });
 };
 
-const link = (groupId: number, personIds: number[], callback: (err: any, data: any) => void) => {
+const link = (groupId: number, personIds: number[], callback: repositoryCallback) => {
   const linkSql = `
 delete from ns_admin_app.group_person
 where group_id = ?;
@@ -118,10 +120,66 @@ where id = ?;
   });
 }
 
+const move = (groupId: number, fromGroupId: number | null, toGroupId: number | null, callback: repositoryCallback) => {
+  const moveSql = `
+update ns_admin_app.group
+set parent_id = ?, date_updated = now()
+where id = ?;
+
+update ns_admin_app.group
+set date_updated = now()
+where id = ?;
+
+update ns_admin_app.group
+set date_updated = now()
+where id = ?;
+
+select date_updated 'dateUpdated'
+from ns_admin_app.group
+where id = ?;
+
+select date_updated 'dateUpdated'
+from ns_admin_app.group
+where id = ?;
+
+select date_updated 'dateUpdated'
+from ns_admin_app.group
+where id = ?;
+  `;
+
+  connection.beginTransaction(() => {
+    connection.query(moveSql, [
+      toGroupId, groupId, 
+      fromGroupId, toGroupId,
+      groupId, fromGroupId, toGroupId
+    ], (sqlErr, res) => {
+      if (sqlErr) {
+        console.log(sqlErr.message);
+        connection.rollback(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(sqlErr, null);
+          }
+        });
+      } else {
+        connection.commit(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(null, [res[3][0], res[4][0], res[5][0]]);
+          }
+        });
+      }
+    });
+  });
+};
+
 const GroupRepository = {
   add,
   update,
-  link
+  link,
+  move
 };
 
 export default GroupRepository;

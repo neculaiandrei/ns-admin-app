@@ -18,7 +18,7 @@ export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
   };
 
   const goToMove = () => {
-    history.push('/move');
+    history.push(`/move/group/${props.group.id}`);
   };
 
   const goToGroup = () => {

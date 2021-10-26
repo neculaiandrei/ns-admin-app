@@ -3,6 +3,7 @@ import { GroupAdd } from "./GroupAdd";
 import { GroupEdit } from "./GroupEdit";
 import { GroupInfo } from "./GroupInfo";
 import { Groups } from "./Groups";
+import { MoveGroup, MovePerson } from "./Move";
 import { PersonAdd } from "./PersonAdd";
 import { PersonEdit } from "./PersonEdit";
 import { PersonInfo } from "./PersonInfo";
@@ -48,10 +49,10 @@ export const Routes = () => (
       <GroupEdit />
     </Route>
     <Route path="/move/person/:personId/:groupId">
-      <div></div>
+      <MovePerson />
     </Route>
     <Route path="/move/group/:groupId">
-      <div></div>
+      <MoveGroup /> 
     </Route>
   </Switch>
 );
