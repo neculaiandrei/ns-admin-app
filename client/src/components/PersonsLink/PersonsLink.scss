@@ -52,5 +52,9 @@
     &:focus {
       background-color: $darkBlue;
     }
+
+    &[disabled] {
+      background-color: #AAA;
+    }
   }
 }

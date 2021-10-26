@@ -6,6 +6,10 @@ INSERT INTO ns_admin_app.group
 (name, parent_id, date_created, date_updated)
 VALUES (?, ?, now(), now());
 
+update ns_admin_app.group
+set date_updated = now()
+where id = ?;
+
 select 
     id 'id', 
     name 'name',
@@ -13,15 +17,19 @@ select
     date_created 'dateCreated',
     date_updated 'dateUpdated'
 from ns_admin_app.group
-where id = LAST_INSERT_ID()
+where id = LAST_INSERT_ID();
+
+select date_updated 'dateUpdated'
+from ns_admin_app.group
+where id = ?;
   `;
 
-  connection.query(insertSql, [name, parentId], (err, res) => {
+  connection.query(insertSql, [name, parentId, parentId, parentId], (err, res) => {
     if (err) {
       console.log(err.message);
       callback(err, null)
     } else {
-      callback(null, res[1][0]);
+      callback(null, [res[2][0], res[3][0]]);
     }
   });
 };

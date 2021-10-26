@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useGroupParentIdParam } from '../../hooks/useGroupParentIdParam';
+import { replaceItemInArrayBy } from '../../utils/arrayUtils';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { GroupCard } from '../common/GroupCard';
@@ -19,18 +20,33 @@ export const GroupAdd = () => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(group => {
-      setData({
-        ...data,
-        groups: [
-          ...data.groups,
-          group
-        ]
-      });
-
+    }).then(([group, obj]) => {
       if (groupParentId) {
+        const parentGroup = data.groups.find(g => g.id === groupParentId);
+
+        if (!parentGroup) {
+          return;
+        }
+
+        const newParentGrup = { ...parentGroup, dateUpdated: obj.dateUpdated };
+        let newGroups = [...data.groups, group];
+        newGroups = replaceItemInArrayBy(newGroups, 'id', groupParentId, newParentGrup);
+
+        setData({
+          ...data,
+          groups: newGroups
+        });
+
         history.push(`/groups/${groupParentId}`);
       } else {
+        setData({
+          ...data,
+          groups: [
+            ...data.groups,
+            group
+          ]
+        });
+
         history.push('/groups');
       }
     });
