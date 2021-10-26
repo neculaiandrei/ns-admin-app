@@ -81,4 +81,4 @@ pm2 start Server
 
 -- scp dump sql to ubuntu
 sudo mysql
-source /home/ubuntu/DumpXXX.sql
+source /home/ubuntu/schema.sql

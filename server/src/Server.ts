@@ -6,13 +6,13 @@ import { useApiRoutes } from './ApiRoutes';
 const app = express();
 const port = 3001;
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, '../../client/build')));
 app.use(express.json());
 
 useApiRoutes(app);
 
 app.get('*', (req, res) => {
-  var indexPath = path.resolve(__dirname, '../client/build', 'index.html');
+  var indexPath = path.resolve(__dirname, '../../client/build', 'index.html');
   res.sendFile(indexPath);
 });
 
