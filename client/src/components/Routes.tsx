@@ -47,5 +47,11 @@ export const Routes = () => (
     <Route path="/group/edit/:id">
       <GroupEdit />
     </Route>
+    <Route path="/move/person/:personId/:groupId">
+      <div></div>
+    </Route>
+    <Route path="/move/group/:groupId">
+      <div></div>
+    </Route>
   </Switch>
 );

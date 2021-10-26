@@ -24,13 +24,27 @@ from ns_admin_app.group
 where id = ?;
   `;
 
-  connection.query(insertSql, [name, parentId, parentId, parentId], (err, res) => {
-    if (err) {
-      console.log(err.message);
-      callback(err, null)
-    } else {
-      callback(null, [res[2][0], res[3][0]]);
-    }
+  connection.beginTransaction(() => {
+    connection.query(insertSql, [name, parentId, parentId, parentId], (sqlErr, res) => {
+      if (sqlErr) {
+        console.log(sqlErr.message);
+        connection.rollback(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(sqlErr, null);
+          }
+        });
+      } else {
+        connection.commit(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(null, [res[2][0], res[3][0]]);
+          }
+        })
+      }
+    });
   });
 };
 
@@ -80,13 +94,27 @@ where id = ?;
 
   const insertParams = personIds.map(personId => [ personId, groupId ]);
   
-  connection.query(linkSql, [groupId, insertParams, groupId, groupId], (err, res) => {
-    if (err) {
-      console.log(err.message);
-      callback(err, null)
-    } else {
-      callback(null, res[3][0]);
-    }
+  connection.beginTransaction(() => {
+    connection.query(linkSql, [groupId, insertParams, groupId, groupId], (sqlErr, res) => {
+      if (sqlErr) {
+        console.log(sqlErr.message);
+        connection.rollback(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(sqlErr, null);
+          }
+        });
+      } else {
+        connection.commit(tranErr => {
+          if (tranErr) {
+            console.log(tranErr.message);
+          } else {
+            callback(null, res[3][0]);
+          }
+        });
+      }
+    });
   });
 }
 
