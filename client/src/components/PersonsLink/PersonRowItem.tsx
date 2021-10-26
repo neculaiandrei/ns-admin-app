@@ -13,7 +13,7 @@ export const PersonRowItem = ({ person, onCheck }: PersonRowItemProps) => {
         <span>{person.firstName} {person.lastName}</span>
         <span>{person.jobTitle}</span>
       </div>
-      <div>
+      <div className="ns-list-item-buttons-container">
         <input type="checkbox" checked={person.linked} onChange={() => onCheck(person.id)}></input>
       </div>
     </ListItem>

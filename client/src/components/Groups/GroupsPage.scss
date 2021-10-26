@@ -58,6 +58,13 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        
+        > span:first-child {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         
         > span:last-child {
           font-size: 0.7em;
@@ -67,10 +74,17 @@
     .ns-list-item-info-group {
       flex-grow: 1;
       cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       i {
         margin-right: 8px;
       }
+    }
+
+    .ns-list-item-buttons-container {
+      display: flex;
     }
 
     button:hover {

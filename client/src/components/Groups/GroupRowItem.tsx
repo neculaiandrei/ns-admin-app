@@ -31,7 +31,7 @@ export const GroupRowItem: React.FC<GroupRowItemProps> = (props) => {
         <i className="fas fa-users"></i>
         {props.group.name}
       </div>
-      <div>
+      <div className="ns-list-item-buttons-container">
         <ListItemButton iconClassName="fas fa-info-circle" onClick={goToPersonDetail} />
         <ListItemButton iconClassName="far fa-edit" onClick={goToPersonEdit} />
         <ListItemButton iconClassName="fas fa-arrows-alt" onClick={goToMove} />

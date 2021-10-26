@@ -23,7 +23,7 @@ export const PersonRowItem = ({ person }: PersonRowItemProps) => {
         <span>{person.firstName} {person.lastName}</span>
         <span>{person.jobTitle}</span>
       </div>
-      <div>
+      <div className="ns-list-item-buttons-container">
         <ListItemButton iconClassName="fas fa-info-circle" onClick={goToPersonDetail} />
         <ListItemButton iconClassName="far fa-edit" onClick={goToPersonEdit} />
       </div>

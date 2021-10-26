@@ -20,7 +20,7 @@ export const PersonRowItem: React.FC<PersonRowItemProps> = ({ person, currentGro
         <span>{person.firstName} {person.lastName}</span>
         <span>{person.jobTitle}</span>
       </div>
-      <div>
+      <div className="ns-list-item-buttons-container">
         <ListItemButton iconClassName="fas fa-arrows-alt" onClick={goToMove} />
       </div>
     </ListItem>
