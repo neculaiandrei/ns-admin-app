@@ -1,16 +1,17 @@
 import { useHistory } from "react-router-dom";
 import { ListItem, ListItemButton } from "../common/ListItem";
-import { Person } from "../Models";
+import { Group, Person } from "../Models";
 
 export interface PersonRowItemProps {
-  person: Person
+  person: Person,
+  currentGroup?: Group
 };
 
-export const PersonRowItem: React.FC<PersonRowItemProps> = ({ person }) => {
+export const PersonRowItem: React.FC<PersonRowItemProps> = ({ person, currentGroup }) => {
   const history = useHistory();
   
   const goToMove = () => {
-    history.push(`/move/person/${person.id}`);
+    history.push(`/move/person/${person.id}/${currentGroup?.id}`);
   };
 
   return (

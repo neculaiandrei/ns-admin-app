@@ -44,7 +44,7 @@ export const GroupsPage = () => {
   return (
     <div className="ns-groups-page">
       <GroupsPageHeader group={group} goBack={goBack} />
-      <GroupList groups={groups} persons={persons} />
+      <GroupList currentGroup={group} groups={groups} persons={persons} />
     </div>
   );
 };

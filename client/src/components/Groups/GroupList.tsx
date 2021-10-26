@@ -4,7 +4,8 @@ import { PersonRowItem } from "./PersonRowItem";
 
 interface GroupListProps {
   groups: Group[],
-  persons: Person[]
+  persons: Person[],
+  currentGroup?: Group
 }
 
 export const GroupList: React.FC<GroupListProps> = (props) => {
@@ -14,7 +15,7 @@ export const GroupList: React.FC<GroupListProps> = (props) => {
         <GroupRowItem group={g} key={g.id} />
       ))}
        {props.persons.map(p => (
-        <PersonRowItem person={p} key={p.id} /> 
+        <PersonRowItem currentGroup={props.currentGroup} person={p} key={p.id} /> 
       ))}
     </ul>
   )

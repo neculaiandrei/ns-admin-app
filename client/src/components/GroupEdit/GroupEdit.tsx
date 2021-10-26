@@ -1,26 +1,18 @@
 import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Group } from "../Models";
+import { getDefaultGroup, Group } from "../Models";
 import { StoreContext } from "../App";
 import { GroupCard } from "../common/GroupCard";
 import './GroupEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
 import { replaceItemBy } from "../../utils/arrayUtils";
 
-const defaultGroup: Group = {
-  id: 0,
-  name: '',
-  parentId: null,
-  dateCreated: '',
-  dateUpdated: '',
-};
-
 export const GroupEdit = () => {
   const { data, setData } = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
-  const [group, setGroup] = useState<Group>({ ...defaultGroup });
+  const [group, setGroup] = useState<Group>(getDefaultGroup());
   const [name, setName] = useState("");
 
   useEffect(() => {

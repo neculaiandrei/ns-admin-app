@@ -8,7 +8,7 @@ import { BottomNav } from './BottomNav';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import { StoreData } from './Models';
+import { getDefaultStoreData, StoreData } from './Models';
 import { Routes } from './Routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -16,24 +16,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import './main.scss';
 import { safeFetch } from '../utils/fetchUtils';
 
-const defaultData: StoreData = {
-  groups: [],
-  persons: [],
-  links: []
-};
-
 export const StoreContext = React.createContext<{
   data: StoreData,
   setData: (data: StoreData) => void
 }>({
-  data: {...defaultData},
+  data: getDefaultStoreData(),
   setData: () => {}
 });
 
 export const App = () => {
   const size = useWindowResize();
   const elRef = useResizeHeight();
-  const [data, setData] = useState<StoreData>({...defaultData});
+  const [data, setData] = useState<StoreData>(getDefaultStoreData());
 
   useEffect(() => {
     safeFetch('/api/data')

@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router";
 import { replaceItemBy } from "../../utils/arrayUtils";
 import { safeFetch } from "../../utils/fetchUtils";
 import { StoreContext } from "../App";
-import { Group, Person } from "../Models";
+import { getDefaultGroup, Group, Person } from "../Models";
 import { GroupList } from "./GroupList";
 import './Move.scss';
 import { MoveHeader } from "./MoveHeader";
@@ -14,29 +14,23 @@ const useMoveGroupParams = () => {
   return +params.groupId;
 };
 
-const defaultGroup: Group = {
-  id: 0,
-  name: '',
-  dateCreated: '',
-  dateUpdated: '',
-  parentId: null
-};
-
 export const MoveGroup = () => {
   const history = useHistory();
   const { data, setData } = useContext(StoreContext);
   let groupToMoveId = useMoveGroupParams();
-  const [groupToMove, setGroupToMove] = useState<Group>({...defaultGroup});
+  const [groupToMove, setGroupToMove] = useState<Group>(getDefaultGroup());
   const [toGroup, setToGroup] = useState<Group | undefined>(undefined);
   
   useEffect(() => {
-    const group = data.groups.find(g => g.id === groupToMoveId);
+    const newGroupToMove = data.groups.find(g => g.id === groupToMoveId);
 
-    if (group) {
-      const newToGroup = data.groups.find(g => g.id === group.parentId);
-      setToGroup(newToGroup);
-      setGroupToMove(group);
+    if (!newGroupToMove) {
+      return;
     }
+    
+    setGroupToMove(newGroupToMove);
+    const newToGroup = data.groups.find(g => g.id === newGroupToMove.parentId);
+    setToGroup(newToGroup);
   }, [groupToMoveId, data.groups]);
 
   const { groups, persons } = useMemo(() => {

@@ -1,27 +1,18 @@
 import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Person } from "../Models";
+import { getDefaultPerson, Person } from "../Models";
 import { PersonCard } from "../common/PersonCard";
 import { StoreContext } from "../App";
 import './PersonEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
 import { replaceItemBy } from "../../utils/arrayUtils";
 
-const defaultPerson: Person = {
-  id: 0,
-  firstName: '',
-  lastName: '',
-  jobTitle: '',
-  dateCreated: '',
-  dateUpdated: '',
-};
-
 export const PersonEdit = () => {
   const { data, setData } = useContext(StoreContext);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
-  const [person, setPerson] = useState<Person>({ ...defaultPerson });
+  const [person, setPerson] = useState<Person>(getDefaultPerson());
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
