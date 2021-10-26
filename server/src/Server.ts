@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { connection } from './DbConnection';
-import { useApiRoutes } from './ApiRoutes';
+import { useApi } from './Api';
 
 const app = express();
 const port = 3001;
@@ -9,7 +9,7 @@ const port = 3001;
 app.use(express.static(path.resolve(__dirname, '../../client/build')));
 app.use(express.json());
 
-useApiRoutes(app);
+useApi(app);
 
 app.get('*', (req, res) => {
   var indexPath = path.resolve(__dirname, '../../client/build', 'index.html');

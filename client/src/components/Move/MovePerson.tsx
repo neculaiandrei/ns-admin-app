@@ -1,5 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useHistory, useParams } from "react-router";
+import { replaceItemBy } from "../../utils/arrayUtils";
+import { safeFetch } from "../../utils/fetchUtils";
 import { StoreContext } from "../App";
 import { getDefaultGroup, getDefaultPerson, Group, Person } from "../Models";
 import { GroupList } from "./GroupList";
@@ -74,6 +76,39 @@ export const MovePerson = () => {
     return false;
   };
 
+  const save = () => {
+    safeFetch('/api/person/move', {
+      method: 'PUT',
+      body: JSON.stringify({ 
+        personId: personToMove.id,
+        fromGroupId: fromGroup.id,
+        toGroupId: toGroup?.id
+       }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(([
+      fromResult,
+      toResult
+    ]) => {
+      const newLinks = data.links.filter(l => !(l.personId === personToMove.id && l.groupId === fromGroup.id));
+      newLinks.push({ personId: personToMove.id, groupId: toGroup ? toGroup.id : -1 });
+
+      const newFromGroup: Group = {...fromGroup, dateUpdated: fromResult.dateUpdated };
+      const newToGroup: Group = { ...toGroup, dateUpdated: toResult.dateUpdated} as Group;
+
+      let newGroups = replaceItemBy(data.groups, 'id', fromGroup.id, newFromGroup);
+      newGroups = replaceItemBy(newGroups, 'id', toGroup?.id, newToGroup);
+
+      setData({
+        ...data,
+        groups: newGroups,
+        links: newLinks
+      });
+
+      history.push(`/groups/${toGroup?.id}`);
+    });
+  };
 
   return (
     <div className="ns-move-page">
@@ -81,7 +116,7 @@ export const MovePerson = () => {
         group={toGroup} 
         goBack={goBack} 
         saveDisabled={saveDisabled()}
-        save={() => {}} />
+        save={save} />
       <GroupList groups={groups} persons={persons} onGroupSelect={onGroupSelect} />
     </div>
   );

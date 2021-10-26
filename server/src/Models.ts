@@ -25,3 +25,5 @@ export interface AggregateData {
   groups: Group[];
   links: GroupPersonLink[];
 }
+
+export type repositoryCallback = (err: any, data: any) => void;

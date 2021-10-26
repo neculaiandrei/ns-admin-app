@@ -30,7 +30,7 @@ export const App = () => {
   const [data, setData] = useState<StoreData>(getDefaultStoreData());
 
   useEffect(() => {
-    safeFetch('/api/data')
+    safeFetch('/api/aggregate')
       .then(setData);
   }, []);
   

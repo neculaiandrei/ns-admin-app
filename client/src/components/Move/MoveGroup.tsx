@@ -80,12 +80,10 @@ export const MoveGroup = () => {
       let newGroups = replaceItemBy(data.groups, 'id', groupToMove.id, newGroupToMove);
 
       if (groupToMove.parentId) {
-        const fromGroupToMove = data.groups.find(g => g.id === groupToMove.parentId);
-
-        if (fromGroupToMove) {
-          const newFromGroupToMove: Group = {...fromGroupToMove, dateUpdated: fromResult.dateUpdated };
-          newGroups = replaceItemBy(newGroups, 'id', fromGroupToMove.id, newFromGroupToMove);
-        }
+        const fromGroupToMove = data.groups.find(g => g.id === groupToMove.parentId) as Group;
+        
+        const newFromGroupToMove: Group = {...fromGroupToMove, dateUpdated: fromResult.dateUpdated };
+        newGroups = replaceItemBy(newGroups, 'id', fromGroupToMove.id, newFromGroupToMove);
       }
 
       if (toGroup) {

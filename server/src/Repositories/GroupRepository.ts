@@ -1,6 +1,5 @@
-import { connection } from "../DbConnection"
-
-type repositoryCallback = (err: any, data: any) => void;
+import { connection } from "../DbConnection";
+import { repositoryCallback } from "../Models";
 
 const add = (name: string, parentId: number | null, callback: repositoryCallback) => {
   const insertSql = `
