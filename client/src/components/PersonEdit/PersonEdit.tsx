@@ -7,6 +7,7 @@ import { StoreContext } from "../App";
 import './PersonEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
 import { replaceItemBy } from "../../utils/arrayUtils";
+import { toast } from "react-toastify";
 
 export const PersonEdit = () => {
   const { data, setData } = useContext(StoreContext);
@@ -32,6 +33,13 @@ export const PersonEdit = () => {
   }, [person]);
 
   const save = () => {
+    if (firstName === "" || lastName === "") {
+      return toast.error("Name fields cannot be empty", {
+        position: "bottom-right",
+        autoClose: 1200,
+      });
+    }
+    
     safeFetch('/api/person', {
       method: 'PUT',
       body: JSON.stringify({ firstName, lastName, jobTitle, id }),

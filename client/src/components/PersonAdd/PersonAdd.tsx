@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { safeFetch } from '../../utils/fetchUtils';
 import { StoreContext } from '../App';
 import { PersonCard } from '../common/PersonCard';
@@ -13,6 +14,13 @@ export const PersonAdd = () => {
   const [jobTitle, setJobTitle] = useState("");
 
   const save = () => {
+    if (firstName === "" || lastName === "") {
+      return toast.error("Name fields cannot be empty", {
+        position: "bottom-right",
+        autoClose: 1200,
+      });
+    }
+
     safeFetch('/api/person', {
       method: 'POST',
       body: JSON.stringify({ firstName, lastName, jobTitle }),

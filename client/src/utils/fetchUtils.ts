@@ -8,7 +8,7 @@ export const safeFetch = (url: string, options?: RequestInit) => {
       } else {
         toast.error("Error occured", {
           position: "bottom-right",
-          autoClose: 1000,
+          autoClose: 1200,
         });
 
         throw "Error occured";

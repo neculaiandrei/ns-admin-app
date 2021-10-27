@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { useGroupParentIdParam } from '../../hooks/useGroupParentIdParam';
 import { replaceItemBy } from '../../utils/arrayUtils';
 import { safeFetch } from '../../utils/fetchUtils';
@@ -14,6 +15,13 @@ export const GroupAdd = () => {
   const [name, setName] = useState("");
 
   const save = () => {
+    if (name === "") {
+      return toast.error("Name field cannot be empty", {
+        position: "bottom-right",
+        autoClose: 1200,
+      });
+    }
+
     safeFetch('/api/group', {
       method: 'POST',
       body: JSON.stringify({ name, parentId: groupParentId }),

@@ -7,6 +7,7 @@ import { GroupCard } from "../common/GroupCard";
 import './GroupEdit.scss';
 import { safeFetch } from "../../utils/fetchUtils";
 import { replaceItemBy } from "../../utils/arrayUtils";
+import { toast } from "react-toastify";
 
 export const GroupEdit = () => {
   const { data, setData } = useContext(StoreContext);
@@ -28,6 +29,13 @@ export const GroupEdit = () => {
   }, [group]);
 
   const save = () => {
+    if (name === "") {
+      return toast.error("Name field cannot be empty", {
+        position: "bottom-right",
+        autoClose: 1200,
+      });
+    }
+
     safeFetch('/api/group', {
       method: 'PUT',
       body: JSON.stringify({ name, id }),
