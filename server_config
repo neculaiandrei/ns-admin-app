@@ -35,7 +35,7 @@ sh deploy.sh
 cd /usr/lib/node_modules/pm2
 sudo pm2 install typescript
 cd ~
-pm2 start code/deploy/server/src/Server.ts
+pm2 start code/deploy/server/src/Server.ts --time --cron-restart="0 */4 * * *"
 pm2 save
 
 sudo apt install nginx
@@ -76,7 +76,7 @@ rm -rd ./code/deploy
 mkdir ./code/deploy
 7z x -y ./code/deploy.7z -o./code/deploy
 pm2 stop Server
-pm2 start Server
+pm2 start Server --time --cron-restart="0 */4 * * *"
 ----
 
 -- scp dump sql to ubuntu
