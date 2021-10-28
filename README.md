@@ -1,6 +1,10 @@
 # ns-admin-app
 
-Demo app to handle people and groups. Below is a demo.
+Demo app to handle people and groups.
 
-https://user-images.githubusercontent.com/3609836/138963096-aeb61c68-69a5-41e6-8511-c47819f31d90.mp4
+Written with Typescript in Node and React.
+
+Below is a demo.
+
+https://user-images.githubusercontent.com/3609836/139020277-ec007074-c72c-414a-a697-bcb555aef000.mp4
 
