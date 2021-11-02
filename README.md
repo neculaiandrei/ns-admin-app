@@ -4,7 +4,7 @@ Demo app to handle people and groups.
 
 Written with Typescript in Node and React.
 
-Live at [3.120.184.54](http://3.120.184.54).
+Live at [35.157.117.62](http://35.157.117.62).
 
 Below is a demo.
 
